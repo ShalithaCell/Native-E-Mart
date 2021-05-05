@@ -1,16 +1,17 @@
 const jwt = require('koa-jwt');
 const StatusCodes = require('http-status-codes');
-const { AuthenticateUser } = require('../../types');
+const { jwtSecret } = require('../../config');
+const { userService } = require('../../services');
 
-const authenticate = (ctx, data) =>
+const authenticate = async (ctx, data) =>
 {
-    const user = Object.setPrototypeOf(data, AuthenticateUser.prototype);
+    const user = await userService.find(data.email, data.password);
 
-    if (user.isAuthenticated)
+    if (user.length !== 0)
     {
         ctx.status = StatusCodes.OK;
         ctx.body = {
-            token   : jwt.sign({ role: 'admin' }, 'A very secret key'), // Should be the same secret key as the one used is ./jwt.js
+            token   : jwt.sign({ role: 'admin' }, jwtSecret), // Should be the same secret key as the one used is ./jwt.js
             message : "Successfully logged in!",
         };
     }
