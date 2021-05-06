@@ -5,13 +5,13 @@ const RoleService = require('../userRole/userRole.service');
 const UserService = {
     find : async (email, password) =>
     {
-        const data = await User.find({ email, password }).populate('role');
+        const data = await User.findOne({ email, password }).populate('role');
 
         return data;
     },
     findByEmail : async (email) =>
     {
-        const data = await User.find({ email }).populate('role').catch((err) =>
+        const data = await User.findOne({ email }).populate('role').catch((err) =>
         {
             // TODO: log error
             console.log(err);

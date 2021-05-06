@@ -25,7 +25,7 @@ router.post('/', async (ctx, next) =>
         return;
     }
 
-    await authenticate(this, request);
+    await authenticate(ctx, request);
     next().then();
 });
 

@@ -9,6 +9,7 @@ dbContext();
 const app = new Koa();
 
 app
+
     .use(koaBody())
     .use(exceptionService.errorHandler) // register generic error handler middleware
     .use(exceptionService.jsonErrorHandler) // register json error handler middleware
