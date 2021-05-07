@@ -159,6 +159,7 @@
         "valid-typeof": 2,
         "eol-last": 2,
         "yoda": 2,
+        "no-underscore-dangle": "off",
         "import/no-unresolved": [
             2,
             { "caseSensitive": false }

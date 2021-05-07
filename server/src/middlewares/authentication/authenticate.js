@@ -1,28 +1,65 @@
-const jwt = require('koa-jwt');
+const jwt = require('jsonwebtoken');
 const StatusCodes = require('http-status-codes');
-const { AuthenticateUser } = require('../../types');
+const { jwtSecret, tokenExpireTime } = require('../../config');
+const { userService } = require('../../services');
+const { Response } = require('../../types');
 
-const authenticate = (ctx, data) =>
+const authenticate = async (ctx, data) =>
 {
-    const user = Object.setPrototypeOf(data, AuthenticateUser.prototype);
+    const response = new Response();
 
-    if (user.isAuthenticated)
+    try
     {
-        ctx.status = StatusCodes.OK;
-        ctx.body = {
-            token   : jwt.sign({ role: 'admin' }, 'A very secret key'), // Should be the same secret key as the one used is ./jwt.js
-            message : "Successfully logged in!",
+        const user = await userService.find(data.email, data.password);
+
+        if (user)
+        {
+            ctx.status = StatusCodes.OK;
+
+            const token = await jwt.sign(user.toJSON(), jwtSecret, {
+                expiresIn : tokenExpireTime,
+            });
+
+            // remove password field
+            user.password = undefined;
+
+            // set response
+            response.success = true;
+            response.message = `Successfully singed in as ${user.name}.`;
+            response.data = {
+                token,
+                user,
+            };
+        }
+        else
+        {
+            ctx.status = StatusCodes.UNAUTHORIZED;
+
+            // set response
+            response.success = false;
+            response.message = `There was an error with your e-mail/password combination. Please try again.`;
+            response.data = {
+                token : null,
+                user  : null,
+            };
+        }
+    }
+    catch (error)
+    {
+        console.log(error);
+
+        ctx.status = StatusCodes.INTERNAL_SERVER_ERROR;
+
+        // set response
+        response.success = false;
+        response.message = `Sorry, there were some technical issues while processing your request.`;
+        response.data = {
+            message : error.message,
+            error,
         };
     }
-    else
-    {
-        ctx.status = StatusCodes.UNAUTHORIZED;
-        ctx.body = {
-            message : "Authentication failed",
-        };
-    }
 
-    return ctx;
+    ctx.body = response;
 };
 
 module.exports = authenticate;

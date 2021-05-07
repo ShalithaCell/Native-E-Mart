@@ -1,5 +1,7 @@
 const koaJwt = require('koa-jwt');
+const { jwtSecret, tokenExpireTime } = require('../../config');
 
 module.exports = koaJwt({
-    secret : 'A very secret key', // Should not be hardcoded
+    secret : jwtSecret, // Should not be hardcoded
+    exp    : tokenExpireTime,
 });

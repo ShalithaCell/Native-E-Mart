@@ -16,7 +16,7 @@ const dbContext = () =>
         console.log('connected to database');
     });
 
-    mongoose.connection.on('error', console.error);
+    mongoose.connection.on('mongo connection error', console.error);
 };
 
 module.exports = dbContext;
