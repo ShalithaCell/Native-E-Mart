@@ -14,6 +14,23 @@ const authenticate = async (ctx, data) =>
 
         if (user)
         {
+            // check email confirmed
+            if (!user.emailConfirmed)
+            {
+                ctx.status = StatusCodes.UNAUTHORIZED;
+
+                // set response
+                response.success = false;
+                response.message = `Your account not has been confirmed.Please verify your account.`;
+                response.data = {
+                    token : null,
+                    user  : null,
+                };
+                ctx.body = response;
+
+                return;
+            }
+
             ctx.status = StatusCodes.OK;
 
             const token = await jwt.sign(user.toJSON(), jwtSecret, {
