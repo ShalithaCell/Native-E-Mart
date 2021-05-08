@@ -4,7 +4,7 @@ const validator = require("email-validator");
 const owasp = require('owasp-password-strength-test');
 const jwt = require('../../middlewares/token/jwt');
 const { NewUser, Response } = require("../../types");
-const { userService } = require('../../services');
+const { userService, mailService } = require('../../services');
 
 // Prefix all routes with: /auth
 const router = new Router({
@@ -83,7 +83,7 @@ router.post('/', jwt, async (ctx, next) =>
         response.success = false;
         response.message = "Cannot create account";
         response.data = {
-            message : '',
+            message : result,
         };
 
         ctx.body = response;
@@ -91,6 +91,8 @@ router.post('/', jwt, async (ctx, next) =>
 
         return;
     }
+
+    mailService.send('shalithax@gmail.com', 'this is test', 'hi').then();
 
     response.success = true;
     response.message = `You are now registered.A verification email has been sent to ${request.email}.`;

@@ -40,10 +40,17 @@ const UserService = {
 
             if (!role)
             {
-                return null;
+                return {
+                    message : `Role does not exists. Please check selected role again.`,
+                };
             }
 
-            if (users) return null;
+            if (users)
+            {
+                return {
+                    message : `this email address is already in use.`,
+                };
+            }
 
             const user = new User({
                 name           : request.name,
