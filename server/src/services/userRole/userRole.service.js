@@ -3,9 +3,17 @@ const { Role } = require("../../models");
 const RoleService = {
     find : async (name) =>
     {
-        const data = await Role.findOne({ name });
+        try
+        {
+            const data = await Role.findOne({ name });
 
-        return data;
+            return data;
+        }
+        catch (e)
+        {
+            console.log(e);
+            throw e;
+        }
     },
     all : async () =>
     {

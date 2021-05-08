@@ -11,15 +11,22 @@ const UserService = {
     },
     findByEmail : async (email) =>
     {
-        const data = await User.findOne({ email }).populate('role').catch((err) =>
+        try
         {
-            // TODO: log error
-            console.log(err);
+            const data = await User.findOne({ email }).populate('role').catch((err) =>
+            {
+                // TODO: log error
+                console.log(err);
 
+                return null;
+            });
+
+            return data;
+        }
+        catch (err)
+        {
             return null;
-        });
-
-        return data;
+        }
     },
     create : async (userData) =>
     {
