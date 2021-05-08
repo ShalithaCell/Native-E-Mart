@@ -4,6 +4,9 @@ const userService = require('./user/user.service');
 const exceptionService = require('./exception/exception.service');
 const RoleService = require('./userRole/userRole.service');
 const DeliveryService = require('./delivery/delivery.Service');
+const CategoryService = require('./category/category.service');
+const ItemService = require('./items/item.service');
+
 module.exports = {
     dbContext,
     applicationDataSeeder,
@@ -11,4 +14,6 @@ module.exports = {
     exceptionService,
     RoleService,
     DeliveryService,
+    CategoryService,
+    ItemService,
 };
