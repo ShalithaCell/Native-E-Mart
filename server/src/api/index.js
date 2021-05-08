@@ -7,3 +7,12 @@ const router = combineRouters(
 );
 
 module.exports = router;
+
+// delivery routes
+const DeliveryRouter = require('./delivery/deliveryRouter');
+
+const deliveryRouter = combineRouters(
+    DeliveryRouter,
+);
+
+module.exports = deliveryRouter;
