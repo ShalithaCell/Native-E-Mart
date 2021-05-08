@@ -40,6 +40,7 @@ router.post('/create', async (ctx, next) =>
 
     const result = await CategoryService.create(request);
 
+
     if (!result)
     {
         ctx.response.status = StatusCodes.FORBIDDEN;
