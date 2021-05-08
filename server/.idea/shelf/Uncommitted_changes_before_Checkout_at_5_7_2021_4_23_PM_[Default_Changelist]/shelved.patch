@@ -1,0 +1,149 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"55617433-6175-4e86-96cc-6e4e31dd5c15\" name=\"Default Changelist\" comment=\"implemented user and role with default data seeders\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/package-lock.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package-lock.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/package.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/api/auth/authRouter.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/api/auth/authRouter.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/app.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/app.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/middlewares/authentication/authenticate.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/middlewares/authentication/authenticate.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/services/database/applicationDbContext.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/services/database/applicationDbContext.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/services/user/user.service.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/services/user/user.service.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1s2FUFeLoWcoLBw5gf5AIq1ETIb\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../client\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.standard\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.standard\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.standard\" value=\"\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"ts.external.directory.path\" value=\"C:\\Users\\shali\\AppData\\Local\\JetBrains\\Toolbox\\apps\\WebStorm\\ch-0\\202.7660.23\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\shali\\Documents\\MyProjects\\Native E Mart\\server\\src\\types\\auth\\newUser\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"start\" type=\"js.build_tools.npm\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"start\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"55617433-6175-4e86-96cc-6e4e31dd5c15\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1620062790422</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620062790422</updated>\r\n      <workItem from=\"1620062791491\" duration=\"1187000\" />\r\n      <workItem from=\"1620092577453\" duration=\"4600000\" />\r\n      <workItem from=\"1620138443512\" duration=\"13443000\" />\r\n      <workItem from=\"1620227779172\" duration=\"8510000\" />\r\n      <workItem from=\"1620268251808\" duration=\"3793000\" />\r\n      <workItem from=\"1620272323596\" duration=\"45000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"implemented user and role with default data seeders\">\r\n      <created>1620231333480</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620231333480</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"implemented user and role with default data seeders\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"implemented user and role with default data seeders\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"828\" y=\"412\" key=\"#ESLint\" timestamp=\"1620179056291\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"828\" y=\"412\" key=\"#ESLint/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620179056291\" />\r\n    <state x=\"414\" y=\"175\" width=\"1092\" height=\"714\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog\" timestamp=\"1620095661727\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"414\" y=\"175\" width=\"1092\" height=\"714\" key=\"#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620095661727\" />\r\n    <state x=\"720\" y=\"322\" key=\"#com.intellij.fileTypes.FileTypeChooser\" timestamp=\"1620095005013\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"720\" y=\"322\" key=\"#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620095005013\" />\r\n    <state width=\"1227\" height=\"466\" key=\"DebuggerActiveHint\" timestamp=\"1620272189507\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1227\" height=\"466\" key=\"DebuggerActiveHint/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272189507\" />\r\n    <state x=\"740\" y=\"275\" key=\"FileChooserDialogImpl\" timestamp=\"1620099454892\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"740\" y=\"275\" key=\"FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620099454892\" />\r\n    <state x=\"740\" y=\"275\" key=\"FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620063375719\" />\r\n    <state width=\"1899\" height=\"269\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1620272274025\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1882\" height=\"166\" key=\"GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620099463138\" />\r\n    <state width=\"1899\" height=\"269\" key=\"GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274025\" />\r\n    <state width=\"1899\" height=\"269\" key=\"GridCell.Tab.0.center\" timestamp=\"1620272274025\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1882\" height=\"166\" key=\"GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620099463138\" />\r\n    <state width=\"1899\" height=\"269\" key=\"GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274025\" />\r\n    <state width=\"1899\" height=\"269\" key=\"GridCell.Tab.0.left\" timestamp=\"1620272274025\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1882\" height=\"166\" key=\"GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620099463138\" />\r\n    <state width=\"1899\" height=\"269\" key=\"GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274025\" />\r\n    <state width=\"1899\" height=\"269\" key=\"GridCell.Tab.0.right\" timestamp=\"1620272274025\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1882\" height=\"166\" key=\"GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620099463138\" />\r\n    <state width=\"1899\" height=\"269\" key=\"GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274025\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.1.bottom\" timestamp=\"1620272274016\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274016\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.1.center\" timestamp=\"1620272274016\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274016\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.1.left\" timestamp=\"1620272274016\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274016\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.1.right\" timestamp=\"1620272274016\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274016\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.2.bottom\" timestamp=\"1620272274017\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.2.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274017\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.2.center\" timestamp=\"1620272274016\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.2.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274016\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.2.left\" timestamp=\"1620272274016\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.2.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274016\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.2.right\" timestamp=\"1620272274017\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.2.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274017\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.3.bottom\" timestamp=\"1620272274017\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.3.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274017\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.3.center\" timestamp=\"1620272274017\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.3.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274017\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.3.left\" timestamp=\"1620272274017\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.3.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274017\" />\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.3.right\" timestamp=\"1620272274017\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state width=\"1899\" height=\"205\" key=\"GridCell.Tab.3.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620272274017\" />\r\n    <state x=\"552\" y=\"240\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1620231336358\">\r\n      <screen x=\"0\" y=\"0\" width=\"1920\" height=\"1040\" />\r\n    </state>\r\n    <state x=\"552\" y=\"240\" key=\"Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040\" timestamp=\"1620231336358\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -21,13 +21,6 @@
+   <component name="ChangeListManager">
+     <list default="true" id="55617433-6175-4e86-96cc-6e4e31dd5c15" name="Default Changelist" comment="implemented user and role with default data seeders">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/api/auth/authRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth/authRouter.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/middlewares/authentication/authenticate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/authentication/authenticate.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/services/database/applicationDbContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/database/applicationDbContext.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/services/user/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user/user.service.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -57,6 +50,7 @@
+   </component>
+   <component name="PropertiesComponent">
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
++    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="dart.analysis.tool.window.visible" value="false" />
+     <property name="last_opened_file_path" value="$PROJECT_DIR$/../client" />
+@@ -75,6 +69,7 @@
+   </component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\Dula\Desktop\DS_Ass_02_Dula\Native-E-Mart\server" />
+       <recent name="C:\Users\shali\Documents\MyProjects\Native E Mart\server\src\types\auth\newUser" />
+     </key>
+   </component>
+@@ -104,6 +99,7 @@
+       <workItem from="1620227779172" duration="8510000" />
+       <workItem from="1620268251808" duration="3793000" />
+       <workItem from="1620272323596" duration="45000" />
++      <workItem from="1620288711974" duration="5724000" />
+     </task>
+     <task id="LOCAL-00001" summary="implemented user and role with default data seeders">
+       <created>1620231333480</created>
+@@ -134,99 +130,4 @@
+     <MESSAGE value="implemented user and role with default data seeders" />
+     <option name="LAST_COMMIT_MESSAGE" value="implemented user and role with default data seeders" />
+   </component>
+-  <component name="WindowStateProjectService">
+-    <state x="828" y="412" key="#ESLint" timestamp="1620179056291">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state x="828" y="412" key="#ESLint/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620179056291" />
+-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620095661727">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state x="414" y="175" width="1092" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620095661727" />
+-    <state x="720" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620095005013">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state x="720" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620095005013" />
+-    <state width="1227" height="466" key="DebuggerActiveHint" timestamp="1620272189507">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1227" height="466" key="DebuggerActiveHint/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272189507" />
+-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1620099454892">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1620099454892" />
+-    <state x="740" y="275" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620063375719" />
+-    <state width="1899" height="269" key="GridCell.Tab.0.bottom" timestamp="1620272274025">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1882" height="166" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1620099463138" />
+-    <state width="1899" height="269" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274025" />
+-    <state width="1899" height="269" key="GridCell.Tab.0.center" timestamp="1620272274025">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1882" height="166" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1620099463138" />
+-    <state width="1899" height="269" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274025" />
+-    <state width="1899" height="269" key="GridCell.Tab.0.left" timestamp="1620272274025">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1882" height="166" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1620099463138" />
+-    <state width="1899" height="269" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274025" />
+-    <state width="1899" height="269" key="GridCell.Tab.0.right" timestamp="1620272274025">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1882" height="166" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1620099463138" />
+-    <state width="1899" height="269" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274025" />
+-    <state width="1899" height="205" key="GridCell.Tab.1.bottom" timestamp="1620272274016">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274016" />
+-    <state width="1899" height="205" key="GridCell.Tab.1.center" timestamp="1620272274016">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274016" />
+-    <state width="1899" height="205" key="GridCell.Tab.1.left" timestamp="1620272274016">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274016" />
+-    <state width="1899" height="205" key="GridCell.Tab.1.right" timestamp="1620272274016">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274016" />
+-    <state width="1899" height="205" key="GridCell.Tab.2.bottom" timestamp="1620272274017">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.2.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274017" />
+-    <state width="1899" height="205" key="GridCell.Tab.2.center" timestamp="1620272274016">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.2.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274016" />
+-    <state width="1899" height="205" key="GridCell.Tab.2.left" timestamp="1620272274016">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.2.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274016" />
+-    <state width="1899" height="205" key="GridCell.Tab.2.right" timestamp="1620272274017">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.2.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274017" />
+-    <state width="1899" height="205" key="GridCell.Tab.3.bottom" timestamp="1620272274017">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.3.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274017" />
+-    <state width="1899" height="205" key="GridCell.Tab.3.center" timestamp="1620272274017">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.3.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274017" />
+-    <state width="1899" height="205" key="GridCell.Tab.3.left" timestamp="1620272274017">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.3.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274017" />
+-    <state width="1899" height="205" key="GridCell.Tab.3.right" timestamp="1620272274017">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state width="1899" height="205" key="GridCell.Tab.3.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620272274017" />
+-    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1620231336358">
+-      <screen x="0" y="0" width="1920" height="1040" />
+-    </state>
+-    <state x="552" y="240" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1620231336358" />
+-  </component>
+ </project>
+\ No newline at end of file
