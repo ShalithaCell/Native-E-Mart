@@ -2,6 +2,7 @@ const CredentialType = require('./auth/credential/credentialType');
 const AuthenticateUser = require('./auth/authenticateUser/authenticateUser');
 const NewUser = require('./auth/newUser/newUser');
 const CategoryType = require('./category/categoryType');
+const ItemType = require('./items/items');
 const Response = require('./response/response');
 
 module.exports = {
@@ -9,5 +10,6 @@ module.exports = {
     AuthenticateUser,
     NewUser,
     CategoryType,
+    ItemType,
     Response,
 };
