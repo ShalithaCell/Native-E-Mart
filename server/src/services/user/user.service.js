@@ -43,14 +43,15 @@ const UserService = {
                 return null;
             }
 
-            if (users.length > 0) return null;
+            if (users) return null;
 
             const user = new User({
-                name     : request.name,
-                email    : request.email,
-                password : request.password,
-                phone    : request.phone,
-                role     : role._id,
+                name           : request.name,
+                email          : request.email,
+                password       : request.password,
+                phone          : request.phone,
+                emailConfirmed : false,
+                role           : role._id,
             });
 
             // create user
