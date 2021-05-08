@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const DeliverySchema = new Schema({
-    name : String,
-    address : String,
-    email : String,
-    phone : Number,
+    name           : String,
+    address        : String,
+    email          : String,
+    phone          : Number,
     cashOnDelivery : String,
-    deliveryType : String,
-    costPerKm : String,
-    isActive : Boolean,
+    deliveryType   : String,
+    costPerKm      : String,
+    isActive       : Boolean,
 }, { collection: 'delivery' });
 
 module.exports = mongoose.model('delivery', DeliverySchema);

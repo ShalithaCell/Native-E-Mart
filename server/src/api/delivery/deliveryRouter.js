@@ -1,7 +1,6 @@
 const Router = require('koa-router');
 const StatusCodes = require('http-status-codes');
 const { CredentialType } = require('../../types');
-const { delivery } = require('../../middlewares');
 
 // Prefix all routes with: /delivery
 const deliveryRouter = new Router({
@@ -25,7 +24,6 @@ deliveryRouter.post('/', async (ctx, next) =>
         return;
     }
 
-    await delivery(ctx, request);
     next().then();
 });
 
