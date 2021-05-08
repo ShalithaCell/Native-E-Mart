@@ -1,27 +1,22 @@
 const Router = require('koa-router');
 const StatusCodes = require('http-status-codes');
-const { CategoryType, Response } = require('../../types');
-const { CategoryService } = require('../../services');
+const { ItemType, Response } = require('../../types');
+const { ItemService } = require('../../services');
 
-// Prefix all routes with: /category
+// Prefix all routes with: /item
 const router = new Router({
-    prefix : '/category',
+    prefix : '/item',
 });
 
 // Routes will go here
 
-// category create method
+// item create method
 router.post('/create', async (ctx, next) =>
-
 {
-    const params = ctx.request.body;
-
-    console.log(params);
-
-    const request = Object.setPrototypeOf(ctx.request.body, CategoryType.prototype);
+    const request = Object.setPrototypeOf(ctx.request.body, ItemType.prototype);
     // Check if any of the data field not empty
 
-    console.log(request);
+    console.log(request.isValid());
 
     const response = new Response();
 
@@ -38,14 +33,14 @@ router.post('/create', async (ctx, next) =>
         return;
     }
 
-    const result = await CategoryService.create(request);
+    const result = await ItemService.create(request);
 
     if (!result)
     {
         ctx.response.status = StatusCodes.FORBIDDEN;
 
         response.success = false;
-        response.message = "Cannot create category";
+        response.message = "Cannot create item";
         response.data = {
             message : '',
         };
@@ -57,9 +52,9 @@ router.post('/create', async (ctx, next) =>
     }
 
     response.success = true;
-    response.message = `Category created successfully.`;
+    response.message = `Item created successfully.`;
     response.data = {
-        category : result,
+        item : result,
     };
     ctx.response.status = StatusCodes.OK;
     ctx.body = response;
