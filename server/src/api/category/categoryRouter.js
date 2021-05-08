@@ -14,9 +14,9 @@ const router = new Router({
 router.post('/create', async (ctx, next) =>
 
 {
-    let params = ctx.request.body;
-    console.log(params);
+    const params = ctx.request.body;
 
+    console.log(params);
 
     const request = Object.setPrototypeOf(ctx.request.body, CategoryType.prototype);
     // Check if any of the data field not empty
@@ -32,12 +32,12 @@ router.post('/create', async (ctx, next) =>
         return;
     }
 
-    let result = await CategoryService.create(request);
+    const result = await CategoryService.create(request);
+
     next(
         ctx.response.status = StatusCodes.OK,
-        ctx.body = result
+        ctx.body = result,
     ).then();
-
 });
 
 module.exports = router;
