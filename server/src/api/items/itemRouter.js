@@ -61,4 +61,109 @@ router.post('/create', async (ctx, next) =>
     next().then();
 });
 
+router.get('/getAll', async (ctx, next) =>
+{
+    const response = new Response();
+
+    const result = await ItemService.findAll();
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot get items";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Items retrived successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.get('/getById/:_id', async (ctx, next) =>
+{
+    const { params } = ctx;
+
+    console.log(params._id);
+
+    const response = new Response();
+
+    const result = await ItemService.findById(params._id);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot list item";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Item listed successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.delete('/deleteById/:_id', async (ctx, next) =>
+
+{
+    const { params } = ctx;
+
+    console.log(params._id);
+
+    const response = new Response();
+
+    const result = await ItemService.deleteById(params._id);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot delete category";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Category deleted successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
 module.exports = router;
