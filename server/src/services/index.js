@@ -6,6 +6,8 @@ const RoleService = require('./userRole/userRole.service');
 const DeliveryService = require('./delivery/delivery.Service');
 const CategoryService = require('./category/category.service');
 const ItemService = require('./items/item.service');
+const CartService = require('./cart/cart.service');
+const OrderService = require('./order/order.service');
 
 module.exports = {
     dbContext,
@@ -16,4 +18,6 @@ module.exports = {
     DeliveryService,
     CategoryService,
     ItemService,
+    CartService,
+    OrderService
 };
