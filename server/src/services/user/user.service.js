@@ -40,10 +40,17 @@ const UserService = {
 
             if (!role)
             {
-                return null;
+                return {
+                    message : `Role does not exists. Please check selected role again.`,
+                };
             }
 
-            if (users) return null;
+            if (users)
+            {
+                return {
+                    message : `this email address is already in use.`,
+                };
+            }
 
             const user = new User({
                 name           : request.name,
@@ -64,6 +71,15 @@ const UserService = {
             console.log(e);
             throw e;
         }
+    },
+    activeAccount : async (email) =>
+    {
+        User.updateOne({ email }, {
+            emailConfirmed : true,
+        }, (err, affected, resp) =>
+        {
+            console.log(resp);
+        });
     },
 };
 

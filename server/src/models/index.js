@@ -5,6 +5,7 @@ const Category = require('./category/category');
 const Cart = require('./cart/cart');
 const Order = require('./order/order');
 const Items = require('./items/item');
+const Token = require('./user/tokens');
 
 module.exports = {
     User,
@@ -14,4 +15,5 @@ module.exports = {
     Cart,
     Order,
     Items,
+    Token,
 };

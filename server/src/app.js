@@ -1,5 +1,6 @@
 const Koa = require('koa');
 const koaBody = require('koa-body');
+const KoaStatic = require('koa-static');
 const router = require('./api');
 const { dbContext, exceptionService, applicationDataSeeder } = require('./services');
 
@@ -13,6 +14,7 @@ app
     .use(exceptionService.errorHandler) // register generic error handler middleware
     .use(exceptionService.jsonErrorHandler) // register json error handler middleware
     .use(router()) // Use the Router on the sub routes
+    .use(KoaStatic('public')) // server statics
     // Bootstrap the server
     .listen(process.env.PORT || 5000, () =>
     {

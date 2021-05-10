@@ -8,6 +8,7 @@ const dbContext = () =>
             useNewUrlParser    : true,
             useFindAndModify   : false,
             useUnifiedTopology : true,
+            server             : { socketOptions: { connectTimeoutMS: 10000 } },
         })
         . then(() => { console.log('connection established'); });
 
