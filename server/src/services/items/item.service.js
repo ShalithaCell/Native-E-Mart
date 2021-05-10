@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongoose').Types;
 const { Items } = require("../../models");
 const { ItemType } = require('../../types');
 const CategoryService = require('../category/category.service');
@@ -11,7 +12,17 @@ const ItemService = {
     },
     findById : async (id) =>
     {
-        const data = await Items.find().or({ id });
+        console.log(`in service + ${id}`);
+
+        const data = await Items.findOne({ _id: ObjectId(id) });
+
+        console.log(data);
+
+        return data;
+    },
+    findAll : async () =>
+    {
+        const data = await Items.find({});
 
         return data;
     },
@@ -29,9 +40,10 @@ const ItemService = {
                 return null;
             }
             // check already exists
-            const existingItem = await ItemService.findByItemCode(request.itemCode);
+            const existingItem = await ItemService.findById(request._id);
 
             console.log(`exists : ${existingItem}`);
+
             if (existingItem.length > 0) return null;
 
             // check category
@@ -71,6 +83,16 @@ const ItemService = {
             console.log(e);
             throw e;
         }
+    },
+    deleteById : async (id) =>
+    {
+        console.log(`in service + ${id}`);
+
+        const data = await Items.deleteOne({ _id: ObjectId(id) });
+
+        console.log(data);
+
+        return data;
     },
 };
 

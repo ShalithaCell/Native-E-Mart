@@ -10,6 +10,8 @@ const mailService = require('./system/mailer/nodeMailer.service');
 const emailNotificationService = require('./system/notification/emailNotification.service');
 const TokenService = require('./user/token.service');
 const dataManagerService = require('./system/DataManager/dataManager.service');
+const CartService = require('./cart/cart.service');
+const OrderService = require('./order/order.service');
 
 module.exports = {
     dbContext,
@@ -24,4 +26,6 @@ module.exports = {
     emailNotificationService,
     TokenService,
     dataManagerService,
+    CartService,
+    OrderService
 };
