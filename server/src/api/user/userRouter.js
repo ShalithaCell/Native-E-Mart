@@ -4,7 +4,7 @@ const validator = require("email-validator");
 const owasp = require('owasp-password-strength-test');
 const jwt = require('../../middlewares/token/jwt');
 const { NewUser, Response } = require("../../types");
-const { userService, mailService } = require('../../services');
+const { userService, emailNotificationService, TokenService, dataManagerService } = require('../../services');
 
 // Prefix all routes with: /auth
 const router = new Router({
@@ -74,6 +74,10 @@ router.post('/', jwt, async (ctx, next) =>
         return;
     }
 
+    const hashPassword = await dataManagerService.encryptPassword(request.password);
+
+    request.password = hashPassword;
+
     const result = await userService.create(request);
 
     if (!result)
@@ -92,7 +96,12 @@ router.post('/', jwt, async (ctx, next) =>
         return;
     }
 
-    mailService.send('shalithax@gmail.com', 'this is test', 'hi').then();
+    // get token
+    const tokenData = await TokenService.generateNewToken(request.email);
+
+    // send email for new user account confirmation
+    emailNotificationService
+        .sendUserConfirmationEmail(request.name, request.email, tokenData).then();
 
     response.success = true;
     response.message = `You are now registered.A verification email has been sent to ${request.email}.`;

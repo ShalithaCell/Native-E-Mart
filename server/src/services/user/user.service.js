@@ -72,6 +72,15 @@ const UserService = {
             throw e;
         }
     },
+    activeAccount : async (email) =>
+    {
+        User.updateOne({ email }, {
+            emailConfirmed : true,
+        }, (err, affected, resp) =>
+        {
+            console.log(resp);
+        });
+    },
 };
 
 module.exports = UserService;
