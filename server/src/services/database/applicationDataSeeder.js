@@ -33,21 +33,6 @@ const ApplicationDataSeeder = {
             });
         });
     },
-    seedDelivery : async () =>
-    {
-        fs.readFile(path.resolve('data/delivery.json'), (err, data) =>
-        {
-            if (err) throw err;
-            const delivery = JSON.parse(data);
-
-            delivery.forEach((delivery) =>
-            {
-                const result = DeliveryService.create(delivery);
-
-                console.log(result);
-            });
-        });
-    },
 };
 
 module.exports = ApplicationDataSeeder;
