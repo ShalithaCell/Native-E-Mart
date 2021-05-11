@@ -29,9 +29,6 @@ const ApplicationDataSeeder = {
             {
                 const newUser = user;
 
-
-                console.log(result);
-
                 dataManagerService.encryptPassword(user.password).then((password) =>
                 {
                     newUser.password = password;
