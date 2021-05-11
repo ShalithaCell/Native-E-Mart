@@ -12,11 +12,11 @@ const ItemService = {
     },
     findById : async (id) =>
     {
-        console.log(`in service + ${id}`);
+        // console.log(`in service findById + ${id}`);
 
-        const data = await Items.findOne({ _id: ObjectId(id) });
+        const data = await Items.find({ _id: ObjectId(id) });
 
-        console.log(data);
+        // console.log(data);
 
         return data;
     },
@@ -33,23 +33,23 @@ const ItemService = {
             // check data validation
             const request = Object.setPrototypeOf(itemData, ItemType.prototype);
 
-            console.log("in service");
+            // console.log("in service");
 
             if (!request.isValid())
             {
                 return null;
             }
             // check already exists
-            const existingItem = await ItemService.findById(request._id);
+            const existingItem = await ItemService.findByItemCode(request.itemCode);
 
-            console.log(`exists : ${existingItem}`);
+            // console.log(`exists : ${existingItem}`);
 
             if (existingItem.length > 0) return null;
 
             // check category
             const category = await CategoryService.find(request.category);
 
-            console.log(category);
+            // console.log(category);
 
             if (!category)
             {
@@ -69,12 +69,57 @@ const ItemService = {
                 isActive    : true,
             });
 
-            console.log(item);
+            // console.log(item);
 
             // create item
             const data = await item.save();
 
-            console.log(data);
+            // console.log(data);
+
+            return data;
+        }
+        catch (e)
+        {
+            console.log(e);
+            throw e;
+        }
+    },
+    update : async (ItemData) =>
+    {
+        try 
+        {
+            // check already exists
+            const existingItem = await ItemService.findById(ItemData._id);
+
+            // console.log(`existingItem + ${existingItem}`);
+
+            if (existingItem.length < 1) return null;
+
+            const category = await CategoryService.findByName(ItemData.category);
+
+            // console.log(`category + ${category[0]}`);
+
+            if (!category)
+            {
+                return null;
+            }
+
+            const data = await Items.updateOne(
+                { _id: ObjectId(ItemData._id) },
+                {
+                    $set : {
+                        name        : ItemData.name,
+                        description : ItemData.description,
+                        itemCode    : ItemData.itemCode,
+                        buyPrice    : ItemData.buyPrice,
+                        sellPrice   : ItemData.sellPrice,
+                        weight      : ItemData.weight,
+                        quantity    : ItemData.quantity,
+                        img         : ItemData.img,
+                        category    : category[0]._id,
+                    },
+                },
+            );
 
             return data;
         }
@@ -86,11 +131,11 @@ const ItemService = {
     },
     deleteById : async (id) =>
     {
-        console.log(`in service + ${id}`);
+        // console.log(`in service + ${id}`);
 
         const data = await Items.deleteOne({ _id: ObjectId(id) });
 
-        console.log(data);
+        // console.log(data);
 
         return data;
     },
