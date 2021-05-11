@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const DeliverySchema = new Schema({
+    deliveryId     : String,
     name           : String,
     address        : String,
     email          : String,
