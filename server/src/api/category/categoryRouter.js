@@ -170,4 +170,40 @@ router.delete('/deleteById/:_id', async (ctx, next) =>
     next().then();
 });
 
+router.put('/update', async (ctx, next) =>
+{
+    const params = ctx.request.body;
+
+    console.log(params);
+
+    const response = new Response();
+
+    const result = await CategoryService.update(params);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot update category";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Category updated successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
 module.exports = router;

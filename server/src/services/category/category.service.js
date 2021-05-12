@@ -23,11 +23,11 @@ const CategoryService = {
     },
     findById : async (id) =>
     {
-        console.log(`in service + ${id}`);
+        // console.log(`in service + ${id}`);
 
-        const data = await Category.findOne({ _id: ObjectId(id) });
+        const data = await Category.find({ _id: ObjectId(id) });
 
-        console.log(`data: ${data}`);
+        // console.log(`data: ${data}`);
 
         return data;
     },
@@ -38,7 +38,7 @@ const CategoryService = {
             // check data validation
             const request = Object.setPrototypeOf(categoryData, CategoryType.prototype);
 
-            console.log(request);
+            // console.log(request);
 
             if (!request.isValid())
             {
@@ -47,7 +47,8 @@ const CategoryService = {
             // check already exists
             const existingCategory = await CategoryService.findByName(request.name);
 
-            console.log(existingCategory);
+            // console.log(existingCategory);
+
             if (existingCategory.length > 0) return null;
 
             const category = new Category({
@@ -55,12 +56,12 @@ const CategoryService = {
                 isActive : true,
             });
 
-            console.log(category);
+            // console.log(category);
 
             // create category
             const data = await category.save();
 
-            console.log(data);
+            // console.log(data);
 
             return data;
         }
@@ -75,26 +76,19 @@ const CategoryService = {
     {
         try
         {
-            // check data validation
-
-            // if (!request.isValid())
-            // {
-            //     return null;
-            // }
+            // console.log(categoryData);
             // check already exists
-            const existingCategory = await CategoryService.findByName(categoryData.name);
+            const existingCategory = await CategoryService.findById(categoryData._id);
 
-            console.log(existingCategory);
-            if (existingCategory.length > 0) return null;
+            // console.log(`existingCategory : ${existingCategory}`);
 
-            const data = await Category.update(
-                { _id: 1 },
+            if (existingCategory.length < 1) return null;
+
+            const data = await Category.updateOne(
+                { _id: ObjectId(categoryData._id) },
                 {
                     $set : {
-                        // item             : "ABC123",
-                        // "info.publisher" : "2222",
-                        // tags             : [ "software" ],
-                        // "ratings.1"      : { by: "xyz", rating: 3 },
+                        name : categoryData.name,
                     },
                 },
             );
@@ -110,11 +104,11 @@ const CategoryService = {
 
     deleteById : async (id) =>
     {
-        console.log(`in service + ${id}`);
+        // console.log(`in service + ${id}`);
 
         const data = await Category.deleteOne({ _id: ObjectId(id) });
 
-        console.log(data);
+        // console.log(data);
 
         return data;
     },
