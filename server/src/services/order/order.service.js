@@ -1,17 +1,21 @@
-const mongoose = require("mongoose");
+const { ObjectId } = require('mongoose').Types;
 const { Order } = require("../../models");
 const { OrderType } = require('../../types');
 const CartService = require('../cart/cart.service');
 const ItemsService = require('../items/item.service');
 const UserService = require('../user/user.service');
 
-const ObjectId = mongoose.Types.ObjectId();
-
 const OrderService = {
 
     findById : async (_id) =>
     {
-        const data = await Order.findOne({ _id });
+        const data = await Order.find({ _id: ObjectId(_id) });
+
+        return data;
+    },
+    findAll : async () =>
+    {
+        const data = await Order.find({});
 
         return data;
     },
@@ -91,6 +95,17 @@ const OrderService = {
             console.log(e);
             throw e;
         }
+    },
+
+    deleteById : async (id) =>
+    {
+        // console.log(`in service + ${id}`);
+
+        const data = await Order.deleteOne({ _id: ObjectId(id) });
+
+        // console.log(data);
+
+        return data;
     },
 };
 

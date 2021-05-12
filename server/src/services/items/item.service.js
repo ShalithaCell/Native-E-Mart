@@ -86,7 +86,7 @@ const ItemService = {
     },
     update : async (ItemData) =>
     {
-        try 
+        try
         {
             // check already exists
             const existingItem = await ItemService.findById(ItemData._id);
