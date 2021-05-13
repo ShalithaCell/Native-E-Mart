@@ -54,7 +54,112 @@ router.post('/create', async (ctx, next) =>
     response.success = true;
     response.message = `Data created successfully.`;
     response.data = {
-        item : result,
+        deliver : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.get('/getAll', async (ctx, next) =>
+{
+    const response = new Response();
+
+    const result = await DeliveryService.findAll();
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot get delivery data";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Deliver Details retrieved successfully.`;
+    response.data = {
+        deliver : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.get('/getById/:_id', async (ctx, next) =>
+{
+    const { params } = ctx;
+
+    console.log(params._id);
+
+    const response = new Response();
+
+    const result = await DeliveryService.findById(params._id);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot list delivers";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Deliver details listed successfully.`;
+    response.data = {
+        deliver : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.delete('/deleteById/:_id', async (ctx, next) =>
+
+{
+    const { params } = ctx;
+
+    console.log(params._id);
+
+    const response = new Response();
+
+    const result = await DeliveryService.deleteById(params._id);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot delete deliver details";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Deliver details deleted successfully.`;
+    response.data = {
+        deliver : result,
     };
     ctx.response.status = StatusCodes.OK;
     ctx.body = response;

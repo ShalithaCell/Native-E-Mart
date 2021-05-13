@@ -6,6 +6,7 @@ const ItemType = require('./items/items');
 const Response = require('./response/response');
 const CartType = require('./cart/cartType');
 const OrderType = require('./order/orderType');
+const DeliveryType = require('./delivery/delivery');
 
 module.exports = {
     CredentialType,
@@ -16,4 +17,5 @@ module.exports = {
     Response,
     CartType,
     OrderType,
+    DeliveryType,
 };
