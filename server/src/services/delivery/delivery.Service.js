@@ -1,22 +1,21 @@
+const { ObjectId } = require('mongoose').Types;
 const { Delivery } = require("../../models");
 const { DeliveryType } = require('../../types');
 
 const DeliveryService = {
-    find : async (name) =>
-    {
-        const data = await Delivery.findOne({ name });
-
-        return data;
-    },
-    findByName : async (name) =>
-    {
-        const data = await Delivery.find().or({ name });
-
-        return data;
-    },
     findById : async (id) =>
     {
-        const data = await Delivery.find().or({ id });
+        console.log(`in service + ${id}`);
+
+        const data = await Delivery.findOne({ _id: ObjectId(id) });
+
+        console.log(data);
+
+        return data;
+    },
+    findAll : async () =>
+    {
+        const data = await Delivery.find({});
 
         return data;
     },
@@ -34,10 +33,10 @@ const DeliveryService = {
                 return null;
             }
             // check already exists
-            const existingDelivery = await DeliveryService.findById(request.deliveryId);
+            const existingData = await DeliveryService.findById(request._id);
 
-            console.log(`exists : ${existingDelivery}`);
-            if (existingDelivery.length > 0) return null;
+            console.log(`exists : ${existingData}`);
+            if (existingData) return null;
 
             const delivery = new Delivery({
                 deliveryId     : request.deliveryId,
@@ -65,6 +64,16 @@ const DeliveryService = {
             console.log(e);
             throw e;
         }
+    },
+    deleteById : async (id) =>
+    {
+        console.log(`in service + ${id}`);
+
+        const data = await Delivery.deleteOne({ _id: ObjectId(id) });
+
+        console.log(data);
+
+        return data;
     },
 };
 
