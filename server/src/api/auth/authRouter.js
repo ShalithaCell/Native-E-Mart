@@ -6,7 +6,7 @@ const { TokenService, userService } = require('../../services');
 
 // Prefix all routes with: /auth
 const router = new Router({
-    prefix : '/auth',
+    prefix : '/api/auth',
 });
 
 // Routes will go here
