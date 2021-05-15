@@ -39,3 +39,15 @@ function renderNavigationBar(page){
             </div>
     `
 }
+
+function getSession(){
+    const data =  sessionStorage.getItem(SESSION_KEY);
+    if(data)
+        return data;
+    else
+        return {};
+}
+
+function SetSession(obj){
+    sessionStorage.setItem(SESSION_KEY, obj);
+}
