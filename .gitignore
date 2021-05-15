@@ -211,7 +211,6 @@ fabric.properties
 /.idea/vcs.xml
 /.idea/modules.xml
 /.idea/ICAF.iml
-workspace.xml
 
 # Windows thumbnail cache files
 Thumbs.db

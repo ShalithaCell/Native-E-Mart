@@ -12,7 +12,6 @@ const router = new Router({
 
 // category create method
 router.post('/create', async (ctx, next) =>
-
 {
     const params = ctx.request.body;
 
@@ -58,6 +57,147 @@ router.post('/create', async (ctx, next) =>
 
     response.success = true;
     response.message = `Category created successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.get('/getAll', async (ctx, next) =>
+{
+    const response = new Response();
+
+    const result = await CategoryService.findAll();
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot get categories";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Categories retrived successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.get('/getById/:_id', async (ctx, next) =>
+{
+    const { params } = ctx;
+
+    console.log(params._id);
+
+    const response = new Response();
+
+    const result = await CategoryService.findById(params._id);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot list category";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Category listed successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.delete('/deleteById/:_id', async (ctx, next) =>
+
+{
+    const { params } = ctx;
+
+    console.log(params._id);
+
+    const response = new Response();
+
+    const result = await CategoryService.deleteById(params._id);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot delete category";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Category deleted successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
+
+router.put('/update', async (ctx, next) =>
+{
+    const params = ctx.request.body;
+
+    console.log(params);
+
+    const response = new Response();
+
+    const result = await CategoryService.update(params);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot update category";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Category updated successfully.`;
     response.data = {
         category : result,
     };

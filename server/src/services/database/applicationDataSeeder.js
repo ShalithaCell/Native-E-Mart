@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const RoleService = require('../userRole/userRole.service');
 const UserService = require('../user/user.service');
+const dataManagerService = require('../system/DataManager/dataManager.service');
 
 const ApplicationDataSeeder = {
     seedRoles : async () =>
@@ -19,16 +20,22 @@ const ApplicationDataSeeder = {
     },
     seedUsers : async () =>
     {
-        fs.readFile(path.resolve('data/users.json'), (err, data) =>
+        await fs.readFile(path.resolve('data/users.json'), (err, data) =>
         {
             if (err) throw err;
             const users = JSON.parse(data);
 
             users.forEach((user) =>
             {
-                const result = UserService.create(user);
+                const newUser = user;
 
-                console.log(result);
+                dataManagerService.encryptPassword(user.password).then((password) =>
+                {
+                    newUser.password = password;
+                    const result = UserService.create(newUser);
+
+                    console.log(result);
+                });
             });
         });
     },

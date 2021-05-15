@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const StatusCodes = require('http-status-codes');
 const { jwtSecret, tokenExpireTime } = require('../../config');
-const { userService } = require('../../services');
+const { userService, dataManagerService } = require('../../services');
 const { Response } = require('../../types');
 
 const authenticate = async (ctx, data) =>
@@ -10,7 +10,7 @@ const authenticate = async (ctx, data) =>
 
     try
     {
-        const user = await userService.find(data.email, data.password);
+        const user = await userService.findByEmail(data.email);
 
         if (user)
         {
@@ -26,6 +26,28 @@ const authenticate = async (ctx, data) =>
                     token : null,
                     user  : null,
                 };
+                ctx.body = response;
+
+                return;
+            }
+
+            // check password
+            const authenticated = await dataManagerService
+                .checkPassword(data.password, user.password);
+
+            // check user is authenticated or not
+            if (!authenticated)
+            {
+                ctx.status = StatusCodes.UNAUTHORIZED;
+
+                // set response
+                response.success = false;
+                response.message = `There was an error with your e-mail/password combination. Please try again.`;
+                response.data = {
+                    token : null,
+                    user  : null,
+                };
+
                 ctx.body = response;
 
                 return;
