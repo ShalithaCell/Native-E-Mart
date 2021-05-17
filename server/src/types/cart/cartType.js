@@ -3,6 +3,7 @@ function CartType()
     this.name = '';
     this.user = '';
     this.items = '';
+    this.qty = '';
 }
 
 CartType.prototype.isValid = function()
