@@ -9,3 +9,5 @@ const SESSION_KEY = 'saddwerfsdgfsrtfewr465623as5f65eswf1';
 const BASE_URL = 'http://localhost:5000/api/'
 
 const AUTH_END_POINT = `${BASE_URL}auth`;
+const CREATE_USER_END_POINT = `${BASE_URL}user`;
+const RESET_PASSWORD_END_POINT = `${BASE_URL}user/reset-password`;

@@ -41,6 +41,7 @@ const UserService = {
             if (!role)
             {
                 return {
+                    created : false,
                     message : `Role does not exists. Please check selected role again.`,
                 };
             }
@@ -48,6 +49,7 @@ const UserService = {
             if (users)
             {
                 return {
+                    created : false,
                     message : `this email address is already in use.`,
                 };
             }
@@ -64,7 +66,10 @@ const UserService = {
             // create user
             const data = await user.save();
 
-            return data;
+            return {
+                created : true,
+                data,
+            };
         }
         catch (e)
         {
@@ -80,6 +85,22 @@ const UserService = {
         {
             console.log(resp);
         });
+    },
+    resetPassword : async (email, password) =>
+    {
+        try
+        {
+            User.updateOne({ email }, {
+                password,
+            }, (err, affected, resp) =>
+            {
+                console.log(resp);
+            });
+        }
+        catch (e)
+        {
+            console.log(e);
+        }
     },
 };
 
