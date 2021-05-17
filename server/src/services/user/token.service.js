@@ -1,3 +1,4 @@
+const generator = require('generate-password');
 const dataManagerService = require('../system/DataManager/dataManager.service');
 const { Token } = require('../../models');
 
@@ -29,6 +30,11 @@ const TokenService = {
 
         return true;
     },
+    generateRandomPassword : async () => generator.generate({
+        length  : 15,
+        numbers : true,
+        symbols : true,
+    }),
 };
 
 module.exports = TokenService;
