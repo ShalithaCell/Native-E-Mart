@@ -32,11 +32,6 @@ const OrderService = {
             {
                 return null;
             }
-            // check already exists
-            const existingOrder = await OrderService.findById(ObjectId(request._id));
-
-            console.log(`exists : ${existingOrder}`);
-            if (existingOrder.length > 0) return null;
 
             // check item
             const item = await ItemsService.findByItemCode(request.itemCode);
@@ -49,7 +44,6 @@ const OrderService = {
             }
 
             // check user
-
             const user = await UserService.findByEmail(request.user);
 
             console.log(user);
@@ -75,16 +69,16 @@ const OrderService = {
                 discount        : request.discount,
                 shippingDetails : request.shippingDetails,
                 total           : request.total,
-                item            : item._id,
+                item            : item[0]._id,
                 user            : user._id,
-                cart            : cart._id,
+                cart            : cart[0]._id,
                 isActive        : true,
             });
 
             console.log(order);
 
             // create order
-            const data = await cart.save();
+            const data = await order.save();
 
             console.log(data);
 
