@@ -1,8 +1,5 @@
 function getAllCategories()
 {
-
-    console.log("called 2");
-
     const ajaxCallParams = {};
     const ajaxDataParams = {};
 
@@ -10,15 +7,12 @@ function getAllCategories()
     ajaxCallParams.Url = GET_ALL_CATEGORIES; // Pass Complete end point Url e-g Payment Controller, Create Action
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
-    console.log("called 3");
-
     let categories;
 
     ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
     {
 
         console.log(result);
-        console.log('inside');
 
         // check qpi request is success
         if (result.status === 200)
@@ -34,6 +28,9 @@ function getAllCategories()
                 console.log(category)
                 temp += "<tr>";
                 temp += "<td>" + category.name + "</td>";
+                temp += "<td><button class=\"btn btn-warning\" onClick=editCategory()>Edit</button></td>";
+                temp += "<td><button class=\"btn btn-danger\" onClick=deleteCategory()>Delete</button></td>";
+                temp += "</tr>";
                 // temp += "<td>" + itemData.employee_name + "</td>";
                 // temp += "<td>" + itemData.employee_salary + "</td></tr>";
             });
@@ -42,14 +39,63 @@ function getAllCategories()
         }else {
             console.log(result.status)
         }
-
         return categories;
-
-
     });
 
 }
 
 function addCategory(){
+
+    console.log('inside');
+
+    let categoryName = $('#category-name').val();
+
+    // check validations
+    if (categoryName.length <= 0)
+    {
+        $('.err-categoryName').removeClass('d-none');
+
+        return;
+    }
+    else
+    {
+        $('.err-categoryName').addClass('d-none');
+    }
+
+    // set the api call
+    const ajaxCallParams = {};
+    const ajaxDataParams = {};
+
+    ajaxCallParams.Type = "POST"; // POST type function
+    ajaxCallParams.Url = Add_CATEGORY; // Pass Complete end point Url e-g Payment Controller, Create Action
+    ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+    // Set Data parameters
+    ajaxDataParams.name = categoryName;
+
+    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+    {
+        // check qpi request is success
+        if (result.status === 200)
+        {
+            console.log("add category success");
+            window.location.href = '../../dashboard/category.html';
+        }
+        else if (result.status === 403)
+        {
+            // show the error message
+            $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
+        }
+        else if (result.status === 400)
+        {
+            // show the error message
+            $('.err-categoryName').removeClass('d-none').html(result.responseJSON.message);
+        }
+    });
+}
+function editCategory(){
+
+}
+function deleteCategory(){
 
 }

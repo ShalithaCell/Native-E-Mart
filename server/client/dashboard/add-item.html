@@ -79,53 +79,91 @@
                         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Items</li>
+                                <li class="breadcrumb-item active" aria-current="page">Add Items</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
             </div>
 
-            <!-- Basic Tables start -->
-            <section class="section">
+            <!-- Basic Form start -->
+            <div class="col-md-8">
                 <div class="card">
-                    <div class="col-12">
-                        <div class="container">
-                            <div class="row">
-                                <h5 class="card-header col-10">
-                                    Items
-                                </h5>
-                                <div class="col-2">
-                                    <br/>
-                                    <button class="btn btn-primary" onClick=addItemPage()>Add Item</button>
+                    <div class="card-header">
+                        <h4 class="card-title">Add an Item here</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form form-horizontal">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Item Name</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="item-name" class="form-control"
+                                                   name="itemName" placeholder="Item Name">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label>Item Name</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="item-name" class="form-control"
+                                                   name="itemName" placeholder="Item Name">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label>Item Name</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="text" id="item-name" class="form-control"
+                                                   name="itemName" placeholder="Item Name">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label>Mobile</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="number" id="contact-info" class="form-control"
+                                                   name="contact" placeholder="Mobile">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Mobile</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="number" id="contact-info" class="form-control"
+                                                   name="contact" placeholder="Mobile">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Mobile</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="number" id="contact-info" class="form-control"
+                                                   name="contact" placeholder="Mobile">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Mobile</label>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            <input type="number" id="contact-info" class="form-control"
+                                                   name="contact" placeholder="Mobile">
+                                        </div>
+
+                                        <div class="col-sm-12 d-flex justify-content-end">
+                                            <button type="submit"
+                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <button type="reset"
+                                                    class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
-
-                    <div class="card-body">
-                        <table class="table table-striped" id="itemTable">
-                            <thead>
-                            <tr>
-                                <th>Item name</th>
-                                <th>description</th>
-                                <th>itemCode</th>
-                                <th>buyPrice</th>
-                                <th>sellPrice</th>
-                                <th>weight</th>
-                                <th>quantity</th>
-                                <th>category</th>
-                            </tr>
-                            </thead>
-                            <tbody id="itemData">
-
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
-
-            </section>
-            <!-- Basic Tables end -->
+            </div>
+            <!-- Basic Form end -->
 
         </div>
 
@@ -153,10 +191,6 @@
 <script>
     console.log("called")
     getAllItems();
-
-    function addItemPage(){
-        window.location.href = './add-item.html';
-    }
 </script>
 
 <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

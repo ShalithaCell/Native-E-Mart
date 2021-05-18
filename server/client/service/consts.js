@@ -13,3 +13,4 @@ const CREATE_USER_END_POINT = `${BASE_URL}user`;
 const RESET_PASSWORD_END_POINT = `${BASE_URL}user/reset-password`;
 const GET_ALL_CATEGORIES = `http://localhost:5000/category/getAll`;
 const GET_ALL_ITEMS = `http://localhost:5000/item/getAll`;
+const Add_CATEGORY = `http://localhost:5000/category/create`;
