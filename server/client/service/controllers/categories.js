@@ -27,8 +27,8 @@ function getAllCategories()
                 // console.log(category._id)
                 temp += "<tr>";
                 temp += `<td>${category.name}</td>`;
-                temp += `<td><button class=\"btn btn-warning\" onClick=editCategory("${category._id}")>Edit</button></td>`;
-                temp += `<td><button class=\"btn btn-danger\" onClick=deleteCategory("${category._id}")>Delete</button></td>`;
+                temp += `<td><button class="btn btn-warning" onClick=editCategory("${category._id}")>Edit</button></td>`;
+                temp += `<td><button class="btn btn-danger" onClick=deleteCategory("${category._id}")>Delete</button></td>`;
                 temp += "</tr>";
             });
             document.getElementById('categoryData').innerHTML = temp;
