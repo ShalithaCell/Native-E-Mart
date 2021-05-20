@@ -188,6 +188,7 @@ function createNewUser()
 
 function resetPassword()
 {
+    debugger;
     $('.err-message').addClass('d-none');
     $('.succ-message').addClass('d-none');
 
