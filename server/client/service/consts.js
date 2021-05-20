@@ -13,9 +13,6 @@ const CREATE_USER_END_POINT = `${BASE_URL}user`;
 const UPDATE_USER_END_POINT = `${BASE_URL}user`;
 const RESET_PASSWORD_END_POINT = `${BASE_URL}user/reset-password`;
 
-const GET_ALL_ITEMS = `http://localhost:5000/item/getAll`;
-
-const GET_ALL_DELIVERY = `http://localhost:5000/delivery/getAll`;
 const ADD_DELIVERY = `http://localhost:5000/delivery/create`;
 const DELETE_DELIVERY = 'http://localhost:5000/delivery/deleteById/';
 
