@@ -77,6 +77,16 @@ const UserService = {
             throw e;
         }
     },
+    updateUser : async (email, name, phone) =>
+    {
+        User.updateOne({ email }, {
+            name,
+            phone,
+        }, (err, affected, resp) =>
+        {
+            console.log(resp);
+        });
+    },
     activeAccount : async (email) =>
     {
         User.updateOne({ email }, {
