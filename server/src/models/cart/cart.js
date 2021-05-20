@@ -9,10 +9,11 @@ const CartSchema = new Schema({
         type : Schema.Types.ObjectId,
         ref  : 'user',
     },
-    items : [ {
+    item : {
         type : Schema.Types.ObjectId,
         ref  : 'item',
-    } ],
+    },
+    qty : Number,
 
 }, { collection: 'cart' });
 
