@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="card-body">
-                        <table class="table table-striped" id="deliveryTable">
+                        <table class="table table-striped "  id="deliveryTable">
                             <thead>
                             <tr>
                                 <th>Delivery Id</th>
@@ -122,6 +122,8 @@
                                 <th>CashOnDelivery</th>
                                 <th>Delivery Type </th>
                                 <th>Cost Per Km</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody id="deliveryData">
@@ -142,7 +144,7 @@
     </div>
 </div>
 <script src="../assets/js/home/jquery/jquery-2.2.4.min.js"></script>
-
+<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
 <script src="../service/controllers/delivery.js"></script>
 <script src="../service/consts.js"></script>
 <!-- ##### session file ##### -->
@@ -153,16 +155,15 @@
     console.log("called")
     getAllDelivery();
 
-    // function addDeliveryPage(){
-    //     window.location.href = './add-delivery.html';
-    // }
+    function addDeliveryPage(){
+        window.location.href = './add-delivery.html';
+    }
 </script>
 
 <script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
 <script src="../assets/js/main.js"></script>
-<script src="../assets/vendors/simple-datatables/simple-datatables.js"></script>
 <script>
     // Simple Datatable
     let table1 = document.querySelector('#deliveryTable');
