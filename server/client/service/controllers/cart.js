@@ -7,11 +7,10 @@ $( document ).ready(function() {
 function addToCart(_id){
     console.log(_id);
     window.location.replace('cart.html');
-  
+
 }
 
-function getCart()
-{
+function getCart() {
     const ajaxCallParams = {};
     const ajaxDataParams = {};
 
@@ -21,14 +20,12 @@ function getCart()
 
     let cart;
 
-    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
-    {
+    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) => {
 
         console.log(result.status);
 
         // check qpi request is success
-        if (result.status === 200)
-        {
+        if (result.status === 200) {
             // fetch the data
             cart = result.responseJSON;
             console.log(cart.data);
@@ -45,7 +42,7 @@ function getCart()
                 temp += "<a href=\"#\"><img src=\"./assets/images/bg-img/cart1.jpg\" alt=\"Product\"></a>";
                 temp += "</td>";
                 temp += " <td className=\"cart_product_desc\">";
-                temp += " <h5>"+cart.name+"</h5>";
+                temp += " <h5>" + cart.name + "</h5>";
                 temp += " </td>";
                 temp += " <td className=\"price\">";
                 temp += " <span>$130</span>";
@@ -71,8 +68,9 @@ function getCart()
             });
             document.getElementById('cartData').innerHTML = temp;
 
-        }else {
+        } else {
             console.log(result.status)
         }
         return cart;
     });
+}
