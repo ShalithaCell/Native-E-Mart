@@ -40,9 +40,9 @@ const CartService = {
             if (existingCart.length > 0) return null;
 
             // check item
-            const item = await ItemsService.findByItemCode(request.itemCode);
+            const item = await ItemsService.findByItemCode(request.item);
 
-            console.log(`item + ${item}`);
+            console.log(`item + ${item[0]._id}`);
 
             if (!item)
             {
@@ -60,13 +60,14 @@ const CartService = {
             }
 
             const cart = new Cart({
+                item     : item[0]._id,
                 name     : request.name,
-                item     : item._id,
                 user     : user._id,
+                qty      : request.qty,
                 isActive : true,
             });
 
-            console.log(cart);
+            console.log(`cart + ${cart}`);
 
             // create cart
             const data = await cart.save();
@@ -85,40 +86,42 @@ const CartService = {
     {
         try
         {
-            // check already exists
-            // const existingItem = await ItemService.findById(ItemData._id);
+            const existingItem = await CartService.findById(cartData._id);
 
-            // console.log(`existingItem + ${existingItem}`);
+            console.log(`existingItem + ${existingItem}`);
 
-            // if (existingItem.length < 1) return null;
+            if (existingItem.length < 1) return null;
 
-            // const category = await CategoryService.findByName(ItemData.category);
+            const item = await ItemsService.findByItemCode(cartData.item);
 
-            // console.log(`category + ${category[0]}`);
+            console.log(`item + ${item[0]}`);
+            if (!item)
+            {
+                return null;
+            }
 
-            // if (!category)
-            // {
-            //     return null;
-            // }
+            const user = await UserService.findByEmail(cartData.user);
 
-            // const data = await Items.updateOne(
-            //     { _id: ObjectId(ItemData._id) },
-            //     {
-            //         $set : {
-            //             name        : ItemData.name,
-            //             description : ItemData.description,
-            //             itemCode    : ItemData.itemCode,
-            //             buyPrice    : ItemData.buyPrice,
-            //             sellPrice   : ItemData.sellPrice,
-            //             weight      : ItemData.weight,
-            //             quantity    : ItemData.quantity,
-            //             img         : ItemData.img,
-            //             category    : category[0]._id,
-            //         },
-            //     },
-            // );
-            //
-            // return data;
+            console.log(`user+ ${user}`);
+
+            if (!user)
+            {
+                return null;
+            }
+
+            const data = await Cart.updateOne(
+                { _id: ObjectId(cartData._id) },
+                {
+                    $set : {
+
+                        name : cartData.name,
+                        item : item[0]._id,
+                        user : user._id,
+                    },
+                },
+            );
+
+            return data;
         }
         catch (e)
         {

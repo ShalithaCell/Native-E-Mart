@@ -104,11 +104,11 @@ const CategoryService = {
 
     deleteById : async (id) =>
     {
-        // console.log(`in service + ${id}`);
+        console.log(`in service + ${id}`);
 
         const data = await Category.deleteOne({ _id: ObjectId(id) });
 
-        // console.log(data);
+        console.log(data);
 
         return data;
     },

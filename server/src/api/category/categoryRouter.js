@@ -134,7 +134,6 @@ router.get('/getById/:_id', async (ctx, next) =>
 });
 
 router.delete('/deleteById/:_id', async (ctx, next) =>
-
 {
     const { params } = ctx;
 
