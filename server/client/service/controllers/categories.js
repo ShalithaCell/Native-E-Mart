@@ -4,14 +4,13 @@ function getAllCategories()
     const ajaxDataParams = {};
 
     ajaxCallParams.Type = "GET"; // GET type function
-    ajaxCallParams.Url = GET_ALL_CATEGORIES; // Pass Complete end point Url e-g Payment Controller, Create Action
+    ajaxCallParams.Url = GET_ALL_CATEGORIES; // Pass Complete end point Url
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
     let categories;
 
     ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
     {
-
         console.log(result);
 
         // check qpi request is success
@@ -23,31 +22,31 @@ function getAllCategories()
 
             let temp = "";
 
-            categories.data.category.map(category => {
-
-
+            categories.data.category.map((category) =>
+            {
                 // console.log(category._id)
                 temp += "<tr>";
-                temp += "<td>" + category.name + "</td>";
+                temp += `<td>${category.name}</td>`;
                 temp += `<td><button class=\"btn btn-warning\" onClick=editCategory("${category._id}")>Edit</button></td>`;
                 temp += `<td><button class=\"btn btn-danger\" onClick=deleteCategory("${category._id}")>Delete</button></td>`;
                 temp += "</tr>";
             });
             document.getElementById('categoryData').innerHTML = temp;
-
-        }else {
-            console.log(result.status)
         }
+        else
+        {
+            console.log(result.status);
+        }
+
         return categories;
     });
-
 }
 
-function addCategory(){
-
+function addCategory()
+{
     console.log('inside');
 
-    let categoryName = $('#category-name').val();
+    const categoryName = $('#category-name').val();
 
     // check validations
     if (categoryName.length <= 0)
@@ -66,7 +65,7 @@ function addCategory(){
     const ajaxDataParams = {};
 
     ajaxCallParams.Type = "POST"; // POST type function
-    ajaxCallParams.Url = Add_CATEGORY; // Pass Complete end point Url e-g Payment Controller, Create Action
+    ajaxCallParams.Url = ADD_CATEGORY; // Pass Complete end point
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
     // Set Data parameters
@@ -93,10 +92,9 @@ function addCategory(){
     });
 }
 
-
-function editCategory(_id){
-
-    console.log(_id)
+function editCategory(_id)
+{
+    console.log(_id);
 
     const ajaxCallParams = {};
     const ajaxDataParams = {};
@@ -105,11 +103,10 @@ function editCategory(_id){
     ajaxCallParams.Url = GET_CATEGORY_BY_ID + `${_id}`; // Pass Complete end point Url e-g Payment Controller, Create Action
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
-    let categories='';
+    let categories = '';
 
     ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
     {
-
         console.log(result);
 
         // check qpi request is success
@@ -117,77 +114,69 @@ function editCategory(_id){
         {
             // fetch the data
             categories = result.responseJSON;
-            console.log(category.data);
-
-        }else {
-            console.log(result.status)
+            console.log(categories.data);
+        }
+        else
+        {
+            console.log(result.status);
         }
         // return category;
     });
 
-    categories.map(category => {
-
+    categories.map((category) => 
+    {
         category.name = this.$content.find('.categoryName').val();
-
     });
 
-
-
     $.confirm({
-        title: 'Edit Category!',
-        content: '' +
-            '<form action="" class="formName">' +
-            '<div class="form-group">' +
-            '<label>Category Name</label>' +
-            '<input type="text" placeholder="Category Name" class="categoryName form-control" required />' +
-            '</div>' +
-            '</form>',
-        buttons: {
-            formSubmit: {
-                text: 'Submit',
-                btnClass: 'btn-blue',
-                action: function () {
-                    let name = this.$content.find('.categoryName').val();
-                    if(!name){
+        title   : 'Edit Category!',
+        content : ''
+            + '<form action="" class="formName">'
+            + '<div class="form-group">'
+            + '<label>Category Name</label>'
+            + '<input type="text" placeholder="Category Name" class="categoryName form-control" required />'
+            + '</div>'
+            + '</form>',
+        buttons : {
+            formSubmit : {
+                text     : 'Submit',
+                btnClass : 'btn-blue',
+                action () {
+                    const name = this.$content.find('.categoryName').val();
+
+                    if (!name) {
                         $.alert('provide a valid name');
+
                         return false;
                     }
 
-
                     // $.alert('Category updated');
                     window.location.href = '../../dashboard/category.html';
-                }
+                },
             },
-            cancel: function () {
-                //close
+            cancel()
+            {
+                // close
             },
         },
-        onContentReady: function () {
+        onContentReady()
+        {
             // bind to events
-            var jc = this;
+            const jc = this;
 
-            this.$content.find('form').on('submit', function (e) {
+            this.$content.find('form').on('submit', (e) =>
+            {
                 // if the user submits the form by pressing enter in the field.
                 e.preventDefault();
                 jc.$$formSubmit.trigger('click'); // reference the button and click it
-
-
-
-
-
-
-
-
             });
-        }
+        },
     });
-
 }
 
-
-
-function deleteCategory(_id){
-    console.log(_id)
+function deleteCategory(_id)
+{
+    console.log(_id);
 
     const ajaxCallParams = {};
     const ajaxDataParams = {};

@@ -1,20 +1,18 @@
-$( document ).ready(function() {
+$( document ).ready(() => {
     const header = renderNavigationBar('shop');
-    $("#header").append( header );
+    $("#header").append(header);
 
     const ajaxCallParams = {};
     const ajaxDataParams = {};
 
     ajaxCallParams.Type = "GET"; // GET type function
-    ajaxCallParams.Url = GET_ALL_ITEMS; // Pass Complete end point Url e-g Payment Controller, Create Action
+    ajaxCallParams.Url = GET_ALL_ITEMS; // Pass Complete end point
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
-
 
     let items;
 
     ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
     {
-
         console.log(result);
         console.log('inside');
 
@@ -27,9 +25,9 @@ $( document ).ready(function() {
 
             let temp = "";
 
-            items.data.category.map(item => {
-
-                console.log(item)
+            items.data.category.map((item) =>
+            {
+                console.log(item);
 
                 // temp += "<tr>";
                 // temp += "<td>" + item.name + "</td>";
@@ -45,57 +43,45 @@ $( document ).ready(function() {
                 temp += "      <div class=\"single-product-wrapper\">";
                 temp += "        <!-- Product Image -->";
                 temp += "        <div class=\"product-img\">";
-                temp += "            <img src=\"./assets/images/product-img/product1.jpg\" alt=\"\">"
-                temp += "                <!-- Hover Thumb -->"
-                temp += "                <img class=\"hover-img\" src=\"./assets/images/product-img/product2.jpg\" alt=\"\">"
-                temp += "        </div>"
-                temp += "        <!-- Product Description -->"
-                temp += "        <div class=\"product-description d-flex align-items-center justify-content-between\">"
-                temp += "            <!-- Product Meta Data -->"
-                temp += "            <div class=\"product-meta-data\">"
-                temp += "                <div class=\"line\"></div>"
-                temp += "                <p class=\"product-price\">$180</p>"
-                temp += "                <a href=\"product-details.html\">"
-                temp += "                    <h6>"+item.name+"</h6>";
-                temp += "                </a>"
-                temp += "            </div>"
-                temp += "            <!-- Ratings & Cart -->"
-                temp += "            <div class=\"ratings-cart text-right\">"
-                temp += "                <div class=\"ratings\">"
-                temp += "                   <i class=\"fa fa-star\" aria-hidden=\"true\"></i>"
-                temp += "                   <i class=\"fa fa-star\" aria-hidden=\"true\"></i>"
-                temp += "                   <i class=\"fa fa-star\" aria-hidden=\"true\"></i>"
-                temp += "                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>"
-                temp += "                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>"
-                temp += "               </div>"
-                temp += "                <div class=\"cart\">"
-                temp += `                    <a href=\"#\" onclick=addToCart("${item._id}") data-toggle=\"tooltip\" data-placement=\"left\" title=\"Add to Cart\"><img src=\"./assets/images/core-img/cart.png\" alt=\"\"></a>`
-                temp += "                </div>"
-                temp += "           </div>"
-                temp += "        </div>"
-                temp += "    </div>"
-                temp += " </div>"
+                temp += "            <img src=\"./assets/images/product-img/product1.jpg\" alt=\"\">";
+                temp += "                <!-- Hover Thumb -->";
+                temp += "                <img class=\"hover-img\" src=\"./assets/images/product-img/product2.jpg\" alt=\"\">";
+                temp += "        </div>";
+                temp += "        <!-- Product Description -->";
+                temp += "        <div class=\"product-description d-flex align-items-center justify-content-between\">";
+                temp += "            <!-- Product Meta Data -->";
+                temp += "            <div class=\"product-meta-data\">";
+                temp += "                <div class=\"line\"></div>";
+                temp += "                <p class=\"product-price\">$180</p>";
+                temp += "                <a href=\"product-details.html\">";
+                temp += `                    <h6>${item.name}</h6>`;
+                temp += "                </a>";
+                temp += "            </div>";
+                temp += "            <!-- Ratings & Cart -->";
+                temp += "            <div class=\"ratings-cart text-right\">";
+                temp += "                <div class=\"ratings\">";
+                temp += "                   <i class=\"fa fa-star\" aria-hidden=\"true\"></i>";
+                temp += "                   <i class=\"fa fa-star\" aria-hidden=\"true\"></i>";
+                temp += "                   <i class=\"fa fa-star\" aria-hidden=\"true\"></i>";
+                temp += "                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>";
+                temp += "                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>";
+                temp += "               </div>";
+                temp += "                <div class=\"cart\">";
+                temp += `                    <a href=\"#\" onclick=addToCart("${item._id}") data-toggle=\"tooltip\" data-placement=\"left\" title=\"Add to Cart\"><img src=\"./assets/images/core-img/cart.png\" alt=\"\"></a>`;
+                temp += "                </div>";
+                temp += "           </div>";
+                temp += "        </div>";
+                temp += "    </div>";
+                temp += " </div>";
             });
 
             document.getElementById('shopData').innerHTML = temp;
-
-        }else {
-            console.log(result.status)
+        }
+        else
+        {
+            console.log(result.status);
         }
 
         return items;
-
-
     });
-
-
-
 });
-
-function getAllItemsForShops()
-{
-
-
-
-
-}

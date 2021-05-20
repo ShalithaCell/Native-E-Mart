@@ -1,20 +1,16 @@
 function getAllItems()
 {
-
-
     const ajaxCallParams = {};
     const ajaxDataParams = {};
 
     ajaxCallParams.Type = "GET"; // GET type function
-    ajaxCallParams.Url = GET_ALL_ITEMS; // Pass Complete end point Url e-g Payment Controller, Create Action
+    ajaxCallParams.Url = GET_ALL_ITEMS; // Pass Complete end point Url
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
-
 
     let items;
 
     ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
     {
-
         console.log(result);
         console.log('inside');
 
@@ -27,37 +23,34 @@ function getAllItems()
 
             let temp = "";
 
-            items.data.category.map(item => {
-
-                console.log(item)
+            items.data.category.map((item) => 
+            {
+                console.log(item);
                 temp += "<tr>";
-                temp += "<td>" + item.name + "</td>";
-                temp += "<td>" + item.description + "</td>";
-                temp += "<td>" + item.itemCode + "</td>";
-                temp += "<td>" + item.buyPrice + "</td>";
-                temp += "<td>" + item.sellPrice + "</td>";
-                temp += "<td>" + item.weight + "</td>";
-                temp += "<td>" + item.quantity + "</td>";
-                temp += "<td>" + item.category + "</td></tr>";
+                temp += `<td>${item.name}</td>`;
+                temp += `<td>${item.description}</td>`;
+                temp += `<td>${item.itemCode}</td>`;
+                temp += `<td>${item.buyPrice}</td>`;
+                temp += `<td>${item.sellPrice}</td>`;
+                temp += `<td>${item.weight}</td>`;
+                temp += `<td>${item.quantity}</td>`;
+                temp += `<td>${item.category}</td></tr>`;
             });
 
             document.getElementById('itemData').innerHTML = temp;
-
-        }else {
-            console.log(result.status)
+        }
+        else
+        {
+            console.log(result.status);
         }
 
         return items;
-
-
     });
-
 }
-function addItem(){
-
+function addItem() {
     console.log('inside');
 
-    let categoryName = $('#category-name').val();
+    const categoryName = $('#category-name').val();
 
     // check validations
     if (categoryName.length <= 0)
@@ -76,7 +69,7 @@ function addItem(){
     const ajaxDataParams = {};
 
     ajaxCallParams.Type = "POST"; // POST type function
-    ajaxCallParams.Url = Add_CATEGORY; // Pass Complete end point Url e-g Payment Controller, Create Action
+    ajaxCallParams.Url = ADD_ITEM; // Pass Complete end point
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
     // Set Data parameters
@@ -101,6 +94,4 @@ function addItem(){
             $('.err-categoryName').removeClass('d-none').html(result.responseJSON.message);
         }
     });
-
-
 }
