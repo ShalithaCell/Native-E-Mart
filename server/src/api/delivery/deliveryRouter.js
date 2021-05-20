@@ -40,7 +40,7 @@ router.post('/create', async (ctx, next) =>
         ctx.response.status = StatusCodes.FORBIDDEN;
 
         response.success = false;
-        response.message = "Cannot create ";
+        response.message = "Cannot create.Data is already exists.";
         response.data = {
             message : '',
         };
@@ -166,4 +166,39 @@ router.delete('/deleteById/:_id', async (ctx, next) =>
     next().then();
 });
 
+router.put('/update', async (ctx, next) =>
+{
+    const params = ctx.request.body;
+
+    console.log(params);
+
+    const response = new Response();
+
+    const result = await DeliveryService.update(params);
+
+    if (!result)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
+
+        response.success = false;
+        response.message = "Cannot update delivery details";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    response.success = true;
+    response.message = `Delivery details updated successfully.`;
+    response.data = {
+        category : result,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+    next().then();
+});
 module.exports = router;
