@@ -10,4 +10,6 @@ module.exports = {
     mailSenderPassword     : process.env.MAIL_SENDER_PASSWORD,
     siteLogo               : process.env.SITE_LOGO,
     accountConfirmationURL : process.env.ACCOUNT_CONFIRMATION_URL,
+    siteName               : process.env.SITE_NAME,
+    siteUrl                : process.env.SITE_URL,
 };

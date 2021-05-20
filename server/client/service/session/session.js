@@ -28,7 +28,7 @@ function renderNavigationBar(page){
                 <a href="cart.html" class="cart-nav"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Cart <span>(0)</span></a>
                 <a href="#" class="fav-nav"><i class="fa fa-star" aria-hidden="true"></i> Favourite</a>
                 <a href="#" class="search-nav"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
-                <a href="./dashboard/auth-login.html" class="search-nav"><i class="fa fa-user" aria-hidden="true"></i> My Account</a>
+                <a href="javascript:void(0);" class="search-nav" id="myAccount" onclick="myAccountOnClickHandler()"><i class="fa fa-user" aria-hidden="true"></i> My Account</a>
             </div>
             <!-- Social Button -->
             <div class="social-info d-flex justify-content-between">
@@ -43,11 +43,11 @@ function renderNavigationBar(page){
 function getSession(){
     const data =  sessionStorage.getItem(SESSION_KEY);
     if(data)
-        return data;
+        return JSON.parse(data);
     else
         return {};
 }
 
 function SetSession(obj){
-    sessionStorage.setItem(SESSION_KEY, obj);
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(obj));
 }
