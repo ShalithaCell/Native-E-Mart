@@ -15,7 +15,8 @@ const GET_ALL_CATEGORIES = `http://localhost:5000/category/getAll`;
 const GET_ALL_ITEMS = `http://localhost:5000/item/getAll`;
 
 const GET_ALL_DELIVERY = `http://localhost:5000/delivery/getAll`;
-
+const ADD_DELIVERY = `http://localhost:5000/delivery/create`;
+const DELETE_DELIVERY = 'http://localhost:5000/delivery/deleteById/';
 
 const ADD_CATEGORY = `http://localhost:5000/category/create`;
 const ADD_ITEM = `http://localhost:5000/item/create`;
