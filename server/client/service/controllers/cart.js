@@ -2,6 +2,14 @@ $( document ).ready(function() {
     const header = renderNavigationBar('cart');
     $("#header").append( header );
 });
+
+
+function addToCart(_id){
+    console.log(_id);
+    window.location.replace('cart.html');
+  
+}
+
 function getCart()
 {
     const ajaxCallParams = {};
@@ -68,5 +76,3 @@ function getCart()
         }
         return cart;
     });
-
-}
