@@ -4,7 +4,7 @@ function myAccountOnClickHandler() {
 
     if (!sessionData.authenticated) {
         window.location.href = "./dashboard/auth-login.html";
-        return ;
+        return;
     }
 
     $.confirm({
@@ -24,13 +24,15 @@ function myAccountOnClickHandler() {
                       <div class="form-group">
                         <label for="txtName">Name</label>
                         <input type="text" class="form-control" id="txtName" placeholder="Name">
+                        <span class="text-danger err-name d-none">Enter valid name.</span>
                       </div>
                       <div class="form-group">
                         <label for="txtPhone">Phone</label>
                         <input type="Tel" class="form-control" id="txtPhone" placeholder="Phone">
+                        <span class="text-danger err-phone d-none">Enter valid phone number.</span>
                       </div>
                       <button type="button" class="btn btn-danger" onclick="resetPassword()">Reset-Password</button>
-                      <button type="button" class="btn btn-primary float-right">Submit</button>
+                      <button type="button" id="btnUpdateUser" class="btn btn-primary float-right">Submit</button>
                     </div>
                 </div>
             </div>
@@ -79,20 +81,65 @@ function myAccountOnClickHandler() {
             this.$content.find("#txtName").val(sessionData.authData.user.name);
             this.$content.find("#txtPhone").val(sessionData.authData.user.phone);
 
-            // const email = this.$content.find("#exampleInputEmail1").val();
-            // const name = this.$content.find("#txtName").val();
-            // const phone = this.$content.find("#txtPhone").val();
-            //
-            // if(!email) return ;
-            //
-            // if(!name){
-            //     $.alert('Name is required.');
-            //     return ;
-            // }
-            // if(!phone){
-            //     $.alert('phone is required.');
-            //     return ;
-            // }
+            $('.succ-message').addClass('d-none');
+
+            const scope = this.$content;
+
+            $('#btnUpdateUser').on('click', function () {
+                $('.err-phone').addClass('d-none');
+                $('.err-name').addClass('d-none');
+
+                const email = scope.find("#txtEmail").val();
+                const name = scope.find("#txtName").val();
+                const phone = scope.find("#txtPhone").val();
+
+                if (name.length < 1) {
+                    $('.err-name').removeClass('d-none');
+                    return;
+                }
+
+                if (phone.length < 9) {
+                    $('.err-phone').removeClass('d-none');
+                    return;
+                }
+
+                const ajaxCallParams = {};
+                const ajaxDataParams = {};
+
+                ajaxCallParams.Type = "PUT"; // POST type function
+                ajaxCallParams.Url = UPDATE_USER_END_POINT; // Pass Complete end point Url e-g Payment Controller, Create Action
+                ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+                // Set Data parameters
+                ajaxDataParams.email = email;
+                ajaxDataParams.phone = phone;
+                ajaxDataParams.name = name;
+
+                ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) => {
+                    // check qpi request is success
+                    if (result.status === 200) {
+                        // fetch the data
+                        const authData = result.responseJSON;
+
+                        $.confirm({
+                            title: 'Congratulations',
+                            content: authData.message,
+                            type: 'green',
+                            typeAnimated: true,
+                            buttons: {
+                                gotoHome: {
+                                    text: 'Goto Home',
+                                    btnClass: 'btn-green',
+                                    action() {
+                                        window.location.href = '../index.html';
+                                    },
+                                },
+                            },
+                        });
+
+                    }
+                });
+            });
         }
     });
-};
+}

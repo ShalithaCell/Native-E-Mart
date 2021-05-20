@@ -189,4 +189,41 @@ router.post('/reset-password', async (ctx, next) =>
     next().then();
 });
 
+router.put('/', async (ctx, next) =>
+{
+    const response = new Response();
+
+    if (!ctx.request.body.email || !ctx.request.body.phone || !ctx.request.body.name)
+    {
+        ctx.response.status = StatusCodes.BAD_REQUEST;
+
+        response.success = false;
+        response.message = "required field(s) missing";
+        response.data = {
+            message : "required field(s) missing",
+        };
+
+        ctx.body = response;
+        next().then();
+
+        return;
+    }
+
+    await userService.updateUser(
+        ctx.request.body.email,
+        ctx.request.body.name,
+        ctx.request.body.phone,
+    );
+
+    response.success = true;
+    response.message = `User updated successfully.`;
+    response.data = {
+        message : `User updated successfully.(${ctx.request.body.email})`,
+    };
+    ctx.response.status = StatusCodes.OK;
+    ctx.body = response;
+
+    next().then();
+});
+
 module.exports = router;
