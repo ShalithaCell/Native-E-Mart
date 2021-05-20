@@ -51,18 +51,31 @@ router.post('/create', async (ctx, next) =>
 
         ctx.body = response;
         next().then();
-
-        return;
     }
+    else if (result === true)
+    {
+        ctx.response.status = StatusCodes.FORBIDDEN;
 
-    response.success = true;
-    response.message = `Category created successfully.`;
-    response.data = {
-        category : result,
-    };
-    ctx.response.status = StatusCodes.OK;
-    ctx.body = response;
-    next().then();
+        response.success = false;
+        response.message = "Category already exists";
+        response.data = {
+            message : '',
+        };
+
+        ctx.body = response;
+        next().then();
+    }
+    else
+    {
+        response.success = true;
+        response.message = `Category created successfully.`;
+        response.data = {
+            category : result,
+        };
+        ctx.response.status = StatusCodes.OK;
+        ctx.body = response;
+        next().then();
+    }
 });
 
 router.get('/getAll', async (ctx, next) =>
