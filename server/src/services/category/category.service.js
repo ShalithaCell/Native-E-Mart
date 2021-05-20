@@ -49,7 +49,7 @@ const CategoryService = {
 
             // console.log(existingCategory);
 
-            if (existingCategory.length > 0) return null;
+            if (existingCategory.length > 0) return true;
 
             const category = new Category({
                 name     : request.name,

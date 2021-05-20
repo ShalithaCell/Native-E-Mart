@@ -82,7 +82,7 @@ function addCategory()
         else if (result.status === 403)
         {
             // show the error message
-            $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
+            $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}`);
         }
         else if (result.status === 400)
         {
@@ -150,11 +150,14 @@ function editCategory(_id)
                         const ajaxCallParam = {};
                         const ajaxDataParam = {};
 
-                        ajaxCallParam.Type = "GET"; // GET type function
+                        ajaxCallParam.Type = "PUT"; // GET type function
                         ajaxCallParam.Url = UPDATE_CATEGORY; // Pass Complete end point
                         ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
 
                         const categoryName = $('.categoryName').val();
+
+                        ajaxDataParam._id = _id;
+                        ajaxDataParam.name = categoryName;
 
                         ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
                         {
@@ -166,8 +169,16 @@ function editCategory(_id)
                                 // fetch the data
                                 categories = result.responseJSON;
                                 console.log(`update + ${categories.data}`);
-                                $.alert('Category updated');
-                                // window.location.href = '../../dashboard/category.html';
+                                $.confirm({
+                                    title   : '',
+                                    content : 'Category updated!',
+                                    buttons : {
+                                        ok()
+                                        {
+                                            window.location.href = '../../dashboard/category.html';
+                                        },
+                                    },
+                                });
                             }
                             else
                             {
@@ -228,8 +239,16 @@ function deleteCategory(_id)
                     // check qpi request is success
                     if (result.status === 200)
                     {
-                        window.location.href = '../../dashboard/category.html';
-                        $.alert('Category Deleted!');
+                        $.confirm({
+                            title   : '',
+                            content : 'Category Deleted!',
+                            buttons : {
+                                ok()
+                                {
+                                    window.location.href = '../../dashboard/category.html';
+                                },
+                            },
+                        });
                     }
                     else if (result.status === 403)
                     {
