@@ -52,8 +52,8 @@ $( document ).ready(() => {
                 temp += "            <!-- Product Meta Data -->";
                 temp += "            <div class=\"product-meta-data\">";
                 temp += "                <div class=\"line\"></div>";
-                temp += "                <p class=\"product-price\">$180</p>";
-                temp += "                <a href=\"product-details.html\">";
+                temp += `                <p class=\"product-price\">${item.sellPrice}</p>`;
+                temp += "                <a href=\"#\">";
                 temp += `                    <h6>${item.name}</h6>`;
                 temp += "                </a>";
                 temp += "            </div>";

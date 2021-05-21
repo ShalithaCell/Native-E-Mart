@@ -32,3 +32,6 @@ const UPDATE_ITEM = 'http://localhost:5000/item/update';
 const GET_ALL_DELIVERY = `http://localhost:5000/delivery/getAll`;
 
 const GET_CART=`http://localhost:5000/cart/getAll`;
+const ADD_CART= `http://localhost:5000/cart/create`;
+const UPDATE_CART = 'http://localhost:5000/cart/update';
+const DELETE_CART = 'http://localhost:5000/cart/deleteById/';
