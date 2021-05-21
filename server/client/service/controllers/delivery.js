@@ -207,15 +207,243 @@ function addDelivery(){
         }
     });
 }
-function editDelivery(){
 
+function editDelivery(_id)
+{
+    console.log(_id);
+
+    const ajaxCallParams = {};
+    const ajaxDataParams = {};
+
+    ajaxCallParams.Type = "GET"; // GET type function
+    ajaxCallParams.Url = GET_DELIVERY_BY_ID + `${_id}`; // Pass Complete end point
+    ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+    let deliverys = '';
+
+    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+    {
+        console.log(result);
+
+        // check qpi request is success
+        if (result.status === 200)
+        {
+            // fetch the data
+            deliverys = result.responseJSON;
+            console.log(deliverys.data);
+        }
+        else
+        {
+            console.log(result.status);
+        }
+        // return category;
+    });
+
+    $.confirm({
+        title   : 'Edit Delivery Details!',
+        content : ''
+            + '<form action="" class="formName">'
+            + '<div class="form-group">'
+
+            + '<label>Delivery Id</label>'
+            + '<input type="text" placeholder="Delivery Id" class="deliveryId form-control" required />'
+
+            + '<label>Name</label>'
+            + '<input type="text" placeholder="Name" class="name form-control" required />'
+
+            + '<label>Address</label>'
+            + '<input type="text" placeholder="Address" class="address form-control" required />'
+
+            + '<label>Email</label>'
+            + '<input type="text" placeholder="Email" class="email form-control" required />'
+
+            + '<label>Phone No</label>'
+            + '<input type="text" placeholder="Phone No" class="phoneNo form-control" required />'
+
+            + '<label>CashOnDelivery</label>'
+            + '<input type="text" placeholder="CashOnDelivery" class="cashOnDelivery form-control" required />'
+
+            + '<label>Delivery Type</label>'
+            + '<input type="text" placeholder="Delivery Type" class="deliveryType form-control" required />'
+
+            + '<label>Cost Per Km</label>'
+            + '<input type="text" placeholder="Cost Per Km" class="costPerKm form-control" required />'
+
+            + '</div>'
+            + '</form>',
+        buttons : {
+            formSubmit : {
+                text     : 'Submit',
+                btnClass : 'btn-blue',
+                action () {
+                    const deliveryId = this.$content.find('.deliveryId').val();
+                    const name = this.$content.find('.name').val();
+                    const address = this.$content.find('.address').val();
+                    const email = this.$content.find('.email').val();
+                    const phoneNo = this.$content.find('.phoneNo').val();
+                    const cashOnDelivery = this.$content.find('.cashOnDelivery').val();
+                    const deliveryType = this.$content.find('.deliveryType').val();
+                    const costPerKm = this.$content.find('.costPerKm').val();
+
+
+                    if (!deliveryId )
+                    {
+                        $.alert('provide a valid deliveryId');
+
+                        return false;
+                    }
+                    if (!name)
+                    {
+                        $.alert('provide a valid name');
+
+                        return false;
+                    }
+                    if (!address)
+                    {
+                        $.alert('provide a valid address');
+
+                        return false;
+                    }
+                    if (!email)
+                    {
+                        $.alert('provide a valid email');
+
+                        return false;
+                    }
+                    if (!phoneNo)
+                    {
+                        $.alert('provide a valid phoneNo');
+
+                        return false;
+                    }
+
+                    if (!cashOnDelivery)
+                    {
+                        $.alert('provide a valid cashOnDelivery');
+
+                        return false;
+                    }
+                    if (!deliveryType)
+                    {
+                        $.alert('provide a valid deliveryType');
+
+                        return false;
+                    }
+                    if (!costPerKm)
+                    {
+                        $.alert('provide a valid costPerKm');
+
+                        return false;
+                    }
+                    else
+                    {
+                        const ajaxCallParam = {};
+                        const ajaxDataParam = {};
+
+                        ajaxCallParam.Type = "PUT"; // GET type function
+                        ajaxCallParam.Url = UPDATE_DELIVERY; // Pass Complete end point
+                        ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+                        const deliveryId = $('.deliveryId').val();
+                        const name = $('.name').val();
+                        const address = $('.address').val();
+                        const email = $('.email').val();
+                        const phoneNo = $('.phoneNo').val();
+                        const cashOnDelivery = $('.cashOnDelivery').val();
+                        const deliveryType = $('.deliveryType').val();
+                        const costPerKm = $('.costPerKm').val();
+
+
+                        ajaxDataParam._id = _id;
+                        ajaxDataParam.deliveryId = deliveryId;
+                        ajaxDataParam.name = name;
+                        ajaxDataParam.address = address;
+                        ajaxDataParam.email = email;
+                        ajaxDataParam.phone = phoneNo;
+                        ajaxDataParam.cashOnDelivery = cashOnDelivery;
+                        ajaxDataParam.deliveryType = deliveryType;
+                        ajaxDataParam.costPerKm = costPerKm;
+
+                        ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
+                        {
+                            console.log(result);
+
+                            // check qpi request is success
+                            if (result.status === 200)
+                            {
+                                // fetch the data
+                                deliverys = result.responseJSON;
+                                console.log(`update + ${deliverys.data}`);
+                                $.confirm({
+                                    title   : '',
+                                    content : 'Delivery Details updated!',
+                                    buttons : {
+                                        ok()
+                                        {
+                                            window.location.href = '../../dashboard/delivery.html';
+                                        },
+                                    },
+                                });
+                            }
+                            else
+                            {
+                                console.log(result.status);
+                            }
+                            // return category;
+                        });
+                    }
+                },
+            },
+            cancel()
+            {
+                // close
+            },
+        },
+        onContentReady()
+        {
+            // bind to events
+            const jc = this;
+
+            // categories.map((category) =>
+            // {
+            //     category.name = this.$content.find('.categoryName').val();
+            // });
+            console.log(deliverys.data.deliver.deliveryId);
+
+
+            this.$content.find('.deliveryId').val(deliverys.data.deliver.deliveryId);
+            this.$content.find('.name').val(deliverys.data.deliver.name);
+            this.$content.find('.address').val(deliverys.data.deliver.address);
+            this.$content.find('.email').val(deliverys.data.deliver.email);
+            this.$content.find('.phoneNo').val(deliverys.data.deliver.phone);
+            this.$content.find('.cashOnDelivery').val(deliverys.data.deliver.cashOnDelivery);
+            this.$content.find('.deliveryType').val(deliverys.data.deliver.deliveryType);
+            this.$content.find('.costPerKm').val(deliverys.data.deliver.costPerKm);
+
+
+            this.$content.find('form').on('submit', (e) =>
+            {
+                // if the user submits the form by pressing enter in the field.
+                e.preventDefault();
+                jc.$formSubmit.trigger('click'); // reference the button and click it
+            });
+        },
+    });
 }
+
+
 
 
 function deleteDelivery(_id)
 {
     console.log(_id);
 
+    $.confirm({
+        title   : 'Confirm!',
+        content : 'Delete this Delivery Details?',
+        buttons : {
+            confirm()
+            {
     const ajaxCallParams = {};
     const ajaxDataParams = {};
 
@@ -228,8 +456,16 @@ function deleteDelivery(_id)
         // check qpi request is success
         if (result.status === 200)
         {
-            console.log("Delete Delivery Details Success.");
-            window.location.href = '../../dashboard/delivery.html';
+            $.confirm({
+                title   : '',
+                content : 'Delivery Details Deleted!',
+                buttons : {
+                    ok()
+                    {
+                        window.location.href = '../../dashboard/delivery.html';
+                    },
+                },
+            });
         }
         else if (result.status === 403)
         {
@@ -242,5 +478,10 @@ function deleteDelivery(_id)
             $('.err-deliveryId').removeClass('d-none').html(result.responseJSON.message);
         }
     });
+            },
+            cancel()
+            {
+            },
+        },
+    });
 }
-
