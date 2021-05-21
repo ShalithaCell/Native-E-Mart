@@ -13,8 +13,11 @@ const CREATE_USER_END_POINT = `${BASE_URL}user`;
 const UPDATE_USER_END_POINT = `${BASE_URL}user`;
 const RESET_PASSWORD_END_POINT = `${BASE_URL}user/reset-password`;
 
+const GET_ALL_DELIVERY = `http://localhost:5000/delivery/getAll`;
 const ADD_DELIVERY = `http://localhost:5000/delivery/create`;
 const DELETE_DELIVERY = 'http://localhost:5000/delivery/deleteById/';
+const UPDATE_DELIVERY = 'http://localhost:5000/delivery/update';
+const GET_DELIVERY_BY_ID = 'http://localhost:5000/delivery/getById/';
 
 
 const GET_ALL_CATEGORIES = `http://localhost:5000/category/getAll`;
@@ -29,6 +32,6 @@ const GET_ITEM_BY_ID = 'http://localhost:5000/item/getById/';
 const DELETE_ITEM = 'http://localhost:5000/item/deleteById/';
 const UPDATE_ITEM = 'http://localhost:5000/item/update';
 
-const GET_ALL_DELIVERY = `http://localhost:5000/delivery/getAll`;
+
 
 const GET_CART=`http://localhost:5000/cart/getAll`;
