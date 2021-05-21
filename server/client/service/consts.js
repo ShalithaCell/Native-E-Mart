@@ -16,7 +16,6 @@ const RESET_PASSWORD_END_POINT = `${BASE_URL}user/reset-password`;
 const ADD_DELIVERY = `http://localhost:5000/delivery/create`;
 const DELETE_DELIVERY = 'http://localhost:5000/delivery/deleteById/';
 
-
 const GET_ALL_CATEGORIES = `http://localhost:5000/category/getAll`;
 const ADD_CATEGORY = `http://localhost:5000/category/create`;
 const GET_CATEGORY_BY_ID = 'http://localhost:5000/category/getById/';

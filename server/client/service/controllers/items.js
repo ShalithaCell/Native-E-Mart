@@ -49,342 +49,361 @@ function getAllItems()
         return items;
     });
 }
-// function addItem()
-// {
-//     console.log('inside');
+function addItem()
+{
+    console.log('inside');
 
-//     $.confirm({
-//         title   : 'Add Items!',
-//         content : ''
-//             + '<form action="" class="formName">'
-//             + '<div class="form-group">'
-//             + '<label>Item Name</label>'
-//             + '<input type="text" placeholder="Item Name" class="itemName form-control" required />'
-//             + '</div>'
-//             + '<div class="form-group">'
-//             + '<label>Item description</label>'
-//             + '<input type="text" placeholder="Item description" class="itemDescription form-control" required />'
-//             + '</div>'
-//             + '<div class="form-group">'
-//             + '<label>Item Code</label>'
-//             + '<input type="text" placeholder="Item itemCode" class="itemCode form-control" required />'
-//             + '</div>'
-//             + '<div class="form-group">'
-//             + '<label>Item Buy Price</label>'
-//             + '<input type="text" placeholder="Item buyPrice" class="itemBuyPrice form-control" required />'
-//             + '</div>'
-//             + '<div class="form-group">'
-//             + '<label>Item Sell Price</label>'
-//             + '<input type="text" placeholder="Item sellPrice" class="itemSellPrice form-control" required />'
-//             + '</div>'
-//             + '<div class="form-group">'
-//             + '<label>Item Weight</label>'
-//             + '<input type="text" placeholder="Item weight" class="itemWeight form-control" required />'
-//             + '</div>'
-//             + '<div class="form-group">'
-//             + '<label>Item Quantity</label>'
-//             + '<input type="text" placeholder="Item quantity" class="itemQty form-control" required />'
-//             + '</div>'
-//             + '<div class="form-group">'
-//             + '<label>Item Img</label>'
-//             + '<input type="text" placeholder="Item img" class="itemImg form-control" required />'
-//             + '</div>'
-//             + '<div class="form-group">'
-//             + '<label>Item Category</label>'
-//             + '<input type="text" placeholder="Item category" class="itemCategory form-control" required />'
-//             + '</div>'
-//             + '</form>',
-//         buttons : {
-//             formSubmit : {
-//                 text     : 'Submit',
-//                 btnClass : 'btn-blue',
-//                 action ()
-//                 {
-//                     const name = this.$content.find('.categoryName').val();
-//                     const description = this.$content.find('.categoryName').val();
-//                     const itemCode = this.$content.find('.categoryName').val();
-//                     const buyPrice = this.$content.find('.categoryName').val();
-//                     const sellPrice = this.$content.find('.categoryName').val();
-//                     const weight = this.$content.find('.categoryName').val();
-//                     const quantity = this.$content.find('.categoryName').val();
-//                     const img = this.$content.find('.categoryName').val();
-//                     const category = this.$content.find('.categoryName').val();
+    $.confirm({
+        title   : 'Add Items!',
+        content : ''
+            + '<form action="" class="formName">'
+            + '<div class="form-group">'
+            + '<label>Item Name</label>'
+            + '<input type="text" placeholder="Item Name" class="itemName form-control" required />'
+            + '</div>'
+            + '<div class="form-group">'
+            + '<label>Item description</label>'
+            + '<input type="text" placeholder="Item description" class="itemDescription form-control" required />'
+            + '</div>'
+            + '<div class="form-group">'
+            + '<label>Item Code</label>'
+            + '<input type="text" placeholder="Item itemCode" class="itemCode form-control" required />'
+            + '</div>'
+            + '<div class="form-group">'
+            + '<label>Item Buy Price</label>'
+            + '<input type="number" placeholder="Item buyPrice" class="itemBuyPrice form-control" required />'
+            + '</div>'
+            + '<div class="form-group">'
+            + '<label>Item Sell Price</label>'
+            + '<input type="number" placeholder="Item sellPrice" class="itemSellPrice form-control" required />'
+            + '</div>'
+            + '<div class="form-group">'
+            + '<label>Item Weight</label>'
+            + '<input type="number" placeholder="Item weight" class="itemWeight form-control" required />'
+            + '</div>'
+            + '<div class="form-group">'
+            + '<label>Item Quantity</label>'
+            + '<input type="number" placeholder="Item quantity" class="itemQty form-control" required />'
+            + '</div>'
+            + '<div class="form-group">'
+            + '<label>Item Img</label>'
+            + '<input type="text" placeholder="Item img" class="itemImg form-control" required />'
+            + '</div>'
+            + '<div class="form-group">'
+            + '<label>Item Category</label>'
+            + '<input type="text" placeholder="Item category" class="itemCategory form-control" required />'
+            + '</div>'
+            + '</form>',
+        buttons : {
+            formSubmit : {
+                text     : 'Submit',
+                btnClass : 'btn-blue',
+                action ()
+                {
+                    const name = this.$content.find('.itemName').val();
+                    const description = this.$content.find('.itemDescription').val();
+                    const itemCode = this.$content.find('.itemCode').val();
+                    const buyPrice = this.$content.find('.itemBuyPrice').val();
+                    const sellPrice = this.$content.find('.itemSellPrice').val();
+                    const weight = this.$content.find('.itemWeight').val();
+                    const quantity = this.$content.find('.itemQty').val();
+                    const img = this.$content.find('.itemImg').val();
+                    const category = this.$content.find('.itemCategory').val();
 
-//                     if (!name)
-//                     {
-//                         $.alert('provide a valid name');
+                    if (!name)
+                    {
+                        $.alert('provide a valid name');
 
-//                         return false;
-//                     }
-//                     else
-//                     {
-//                         const ajaxCallParam = {};
-//                         const ajaxDataParam = {};
+                        return false;
+                    }
+                    else if (!description)
+                    {
+                        $.alert('provide a valid description');
 
-//                         ajaxCallParam.Type = "PUT"; // GET type function
-//                         ajaxCallParam.Url = UPDATE_CATEGORY; // Pass Complete end point
-//                         ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
+                        return false;
+                    }
+                    else if (!itemCode)
+                    {
+                        $.alert('provide a valid itemCode');
 
-//                         const categoryName = $('.categoryName').val();
+                        return false;
+                    }
+                    else if (!buyPrice)
+                    {
+                        $.alert('provide a valid buyPrice');
 
-//                         ajaxDataParam._id = _id;
-//                         ajaxDataParam.name = categoryName;
+                        return false;
+                    }
+                    else if (!sellPrice)
+                    {
+                        $.alert('provide a valid sellPrice');
 
-//                         ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
-//                         {
-//                             console.log(result);
+                        return false;
+                    }
+                    else if (!weight)
+                    {
+                        $.alert('provide a valid weight');
 
-//                             // check qpi request is success
-//                             if (result.status === 200)
-//                             {
-//                                 // fetch the data
-//                                 categories = result.responseJSON;
-//                                 console.log(`update + ${categories.data}`);
-//                                 $.confirm({
-//                                     title   : '',
-//                                     content : 'Category updated!',
-//                                     buttons : {
-//                                         ok()
-//                                         {
-//                                             window.location.href = '../../dashboard/category.html';
-//                                         },
-//                                     },
-//                                 });
-//                             }
-//                             else
-//                             {
-//                                 console.log(result.status);
-//                             }
-//                             // return category;
-//                         });
-//                     }
-//                 },
-//             },
-//             cancel()
-//             {
-//                 // close
-//             },
-//         },
-//     });
+                        return false;
+                    }
+                    else if (!quantity)
+                    {
+                        $.alert('provide a valid quantity');
 
-//     const categoryName = $('#category-name').val();
+                        return false;
+                    }
+                    else if (!img)
+                    {
+                        $.alert('provide a valid image');
 
-//     // check validations
-//     if (categoryName.length <= 0)
-//     {
-//         $('.err-categoryName').removeClass('d-none');
+                        return false;
+                    }
+                    else if (!category)
+                    {
+                        $.alert('provide a valid category');
 
-//         return;
-//     }
-//     else
-//     {
-//         $('.err-categoryName').addClass('d-none');
-//     }
+                        return false;
+                    }
+                    else
+                    {
+                        const ajaxCallParam = {};
+                        const ajaxDataParam = {};
 
-//     // set the api call
-//     const ajaxCallParams = {};
-//     const ajaxDataParams = {};
+                        ajaxCallParam.Type = "POST"; // GET type function
+                        ajaxCallParam.Url = ADD_ITEM; // Pass Complete end point
+                        ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
 
-//     ajaxCallParams.Type = "POST"; // POST type function
-//     ajaxCallParams.Url = ADD_ITEM; // Pass Complete end point
-//     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+                        ajaxDataParam.name = name;
+                        ajaxDataParam.description = description;
+                        ajaxDataParam.itemCode = itemCode;
+                        ajaxDataParam.buyPrice = buyPrice;
+                        ajaxDataParam.sellPrice = sellPrice;
+                        ajaxDataParam.quantity = quantity;
+                        ajaxDataParam.weight = weight;
+                        ajaxDataParam.img = img;
+                        ajaxDataParam.category = category;
 
-//     // Set Data parameters
-//     ajaxDataParams.name = categoryName;
+                        let items = '';
 
-//     ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
-//     {
-//         // check qpi request is success
-//         if (result.status === 200)
-//         {
-//             console.log("add category success");
-//             window.location.href = '../../dashboard/category.html';
-//         }
-//         else if (result.status === 403)
-//         {
-//             // show the error message
-//             $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
-//         }
-//         else if (result.status === 400)
-//         {
-//             // show the error message
-//             $('.err-categoryName').removeClass('d-none').html(result.responseJSON.message);
-//         }
-//     });
-// }
-// function editItems(_id)
-// {
-//     console.log(_id);
+                        ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
+                        {
+                            console.log(result);
 
-//     const ajaxCallParams = {};
-//     const ajaxDataParams = {};
+                            // check qpi request is success
+                            if (result.status === 200)
+                            {
+                                // fetch the data
+                                items = result.responseJSON;
+                                $.confirm({
+                                    title   : '',
+                                    content : 'Item added!',
+                                    buttons : {
+                                        OK()
+                                        {
+                                            window.location.href = '../../dashboard/items.html';
+                                        },
+                                    },
+                                });
+                            }
+                            else if (result.status === 403)
+                            {
+                                $.confirm({
+                                    title   : '',
+                                    content : 'Error occured!',
+                                    buttons : {
+                                        OK()
+                                        {
+                                            window.location.href = '../../dashboard/items.html';
+                                        },
+                                    },
+                                });
+                            }
+                            // return category;
+                        });
+                    }
+                },
+            },
+            cancel()
+            {
+                // close
+            },
+        },
+    });
+}
+function editItems(_id)
+{
+    console.log(_id);
 
-//     ajaxCallParams.Type = "GET"; // GET type function
-//     ajaxCallParams.Url = GET_CATEGORY_BY_ID + `${_id}`; // Pass Complete end point
-//     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+    const ajaxCallParams = {};
+    const ajaxDataParams = {};
 
-//     let categories = '';
+    ajaxCallParams.Type = "GET"; // GET type function
+    ajaxCallParams.Url = GET_ITEM_BY_ID + `${_id}`; // Pass Complete end point
+    ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
-//     ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
-//     {
-//         console.log(result);
+    let categories = '';
 
-//         // check qpi request is success
-//         if (result.status === 200)
-//         {
-//             // fetch the data
-//             categories = result.responseJSON;
-//             console.log(categories.data);
-//         }
-//         else
-//         {
-//             console.log(result.status);
-//         }
-//         // return category;
-//     });
+    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+    {
+        console.log(result);
 
-//     $.confirm({
-//         title   : 'Edit Category!',
-//         content : ''
-//             + '<form action="" class="formName">'
-//             + '<div class="form-group">'
-//             + '<label>Category Name</label>'
-//             + '<input type="text" placeholder="Category Name" class="categoryName form-control" required />'
-//             + '</div>'
-//             + '</form>',
-//         buttons : {
-//             formSubmit : {
-//                 text     : 'Submit',
-//                 btnClass : 'btn-blue',
-//                 action () {
-//                     const name = this.$content.find('.categoryName').val();
+        // check qpi request is success
+        if (result.status === 200)
+        {
+            // fetch the data
+            categories = result.responseJSON;
+            console.log(categories.data);
+        }
+        else
+        {
+            console.log(result.status);
+        }
+        // return category;
+    });
 
-//                     if (!name)
-//                     {
-//                         $.alert('provide a valid name');
+    $.confirm({
+        title   : 'Edit Category!',
+        content : ''
+            + '<form action="" class="formName">'
+            + '<div class="form-group">'
+            + '<label>Category Name</label>'
+            + '<input type="text" placeholder="Category Name" class="categoryName form-control" required />'
+            + '</div>'
+            + '</form>',
+        buttons : {
+            formSubmit : {
+                text     : 'Submit',
+                btnClass : 'btn-blue',
+                action ()
+                {
+                    const name = this.$content.find('.categoryName').val();
 
-//                         return false;
-//                     }
-//                     else
-//                     {
-//                         const ajaxCallParam = {};
-//                         const ajaxDataParam = {};
+                    if (!name)
+                    {
+                        $.alert('provide a valid name');
 
-//                         ajaxCallParam.Type = "PUT"; // GET type function
-//                         ajaxCallParam.Url = UPDATE_CATEGORY; // Pass Complete end point
-//                         ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
+                        return false;
+                    }
+                    else
+                    {
+                        const ajaxCallParam = {};
+                        const ajaxDataParam = {};
 
-//                         const categoryName = $('.categoryName').val();
+                        ajaxCallParam.Type = "PUT"; // GET type function
+                        ajaxCallParam.Url = UPDATE_CATEGORY; // Pass Complete end point
+                        ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
 
-//                         ajaxDataParam._id = _id;
-//                         ajaxDataParam.name = categoryName;
+                        const categoryName = $('.categoryName').val();
 
-//                         ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
-//                         {
-//                             console.log(result);
+                        ajaxDataParam._id = _id;
+                        ajaxDataParam.name = categoryName;
 
-//                             // check qpi request is success
-//                             if (result.status === 200)
-//                             {
-//                                 // fetch the data
-//                                 categories = result.responseJSON;
-//                                 console.log(`update + ${categories.data}`);
-//                                 $.confirm({
-//                                     title   : '',
-//                                     content : 'Category updated!',
-//                                     buttons : {
-//                                         ok()
-//                                         {
-//                                             window.location.href = '../../dashboard/category.html';
-//                                         },
-//                                     },
-//                                 });
-//                             }
-//                             else
-//                             {
-//                                 console.log(result.status);
-//                             }
-//                             // return category;
-//                         });
-//                     }
-//                 },
-//             },
-//             cancel()
-//             {
-//                 // close
-//             },
-//         },
-//         onContentReady()
-//         {
-//             // bind to events
-//             const jc = this;
+                        ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
+                        {
+                            console.log(result);
 
-//             // categories.map((category) =>
-//             // {
-//             //     category.name = this.$content.find('.categoryName').val();
-//             // });
-//             console.log(categories.data.category[0]);
+                            // check qpi request is success
+                            if (result.status === 200)
+                            {
+                                // fetch the data
+                                categories = result.responseJSON;
+                                console.log(`update + ${categories.data}`);
+                                $.confirm({
+                                    title   : '',
+                                    content : 'Category updated!',
+                                    buttons : {
+                                        ok()
+                                        {
+                                            window.location.href = '../../dashboard/items.html';
+                                        },
+                                    },
+                                });
+                            }
+                            else
+                            {
+                                console.log(result.status);
+                            }
+                            // return category;
+                        });
+                    }
+                },
+            },
+            cancel()
+            {
+                // close
+            },
+        },
+        onContentReady()
+        {
+            // bind to events
+            const jc = this;
 
-//             this.$content.find('.categoryName').val(categories.data.category[0].name);
+            // categories.map((category) =>
+            // {
+            //     category.name = this.$content.find('.categoryName').val();
+            // });
+            console.log(categories.data.category[0]);
 
-//             this.$content.find('form').on('submit', (e) =>
-//             {
-//                 // if the user submits the form by pressing enter in the field.
-//                 e.preventDefault();
-//                 jc.$$formSubmit.trigger('click'); // reference the button and click it
-//             });
-//         },
-//     });
-// }
+            this.$content.find('.categoryName').val(categories.data.category[0].name);
 
-// function deleteItems(_id)
-// {
-//     console.log(_id);
+            this.$content.find('form').on('submit', (e) =>
+            {
+                // if the user submits the form by pressing enter in the field.
+                e.preventDefault();
+                jc.$$formSubmit.trigger('click'); // reference the button and click it
+            });
+        },
+    });
+}
 
-//     $.confirm({
-//         title   : 'Confirm!',
-//         content : 'Delete this Items?',
-//         buttons : {
-//             confirm()
-//             {
-//                 const ajaxCallParams = {};
-//                 const ajaxDataParams = {};
+function deleteItems(_id)
+{
+    console.log(_id);
 
-//                 ajaxCallParams.Type = "DELETE"; // GET type function
-//                 ajaxCallParams.Url = DELETE_CATEGORY+`${_id}`; // Pass Complete end point Url e-g Payment Controller, Create Action
-//                 ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+    $.confirm({
+        title   : 'Confirm!',
+        content : 'Delete this Items?',
+        buttons : {
+            confirm()
+            {
+                const ajaxCallParams = {};
+                const ajaxDataParams = {};
 
-//                 ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
-//                 {
-//                     // check qpi request is success
-//                     if (result.status === 200)
-//                     {
-//                         $.confirm({
-//                             title   : '',
-//                             content : 'Category Deleted!',
-//                             buttons : {
-//                                 ok()
-//                                 {
-//                                     window.location.href = '../../dashboard/category.html';
-//                                 },
-//                             },
-//                         });
-//                     }
-//                     else if (result.status === 403)
-//                     {
-//                         // show the error message
-//                         $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
-//                     }
-//                     else if (result.status === 400)
-//                     {
-//                         // show the error message
-//                         $('.err-categoryName').removeClass('d-none').html(result.responseJSON.message);
-//                     }
-//                 });
-//             },
-//             cancel()
-//             {
-//             },
-//         },
-//     });
-// }
+                ajaxCallParams.Type = "DELETE"; // GET type function
+                ajaxCallParams.Url = DELETE_CATEGORY+`${_id}`; // Pass Complete end point Url e-g Payment Controller, Create Action
+                ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+                ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+                {
+                    // check qpi request is success
+                    if (result.status === 200)
+                    {
+                        $.confirm({
+                            title   : '',
+                            content : 'Category Deleted!',
+                            buttons : {
+                                ok()
+                                {
+                                    window.location.href = '../../dashboard/category.html';
+                                },
+                            },
+                        });
+                    }
+                    else if (result.status === 403)
+                    {
+                        // show the error message
+                        $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
+                    }
+                    else if (result.status === 400)
+                    {
+                        // show the error message
+                        $('.err-categoryName').removeClass('d-none').html(result.responseJSON.message);
+                    }
+                });
+            },
+            cancel()
+            {
+            },
+        },
+    });
+}
