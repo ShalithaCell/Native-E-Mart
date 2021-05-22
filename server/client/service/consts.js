@@ -19,7 +19,6 @@ const DELETE_DELIVERY = 'http://localhost:5000/delivery/deleteById/';
 const UPDATE_DELIVERY = 'http://localhost:5000/delivery/update';
 const GET_DELIVERY_BY_ID = 'http://localhost:5000/delivery/getById/';
 
-
 const GET_ALL_CATEGORIES = `http://localhost:5000/category/getAll`;
 const ADD_CATEGORY = `http://localhost:5000/category/create`;
 const GET_CATEGORY_BY_ID = 'http://localhost:5000/category/getById/';
