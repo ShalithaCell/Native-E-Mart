@@ -82,6 +82,43 @@ function addItem()
 {
     console.log('inside');
 
+    const ajaxCallParams = {};
+    const ajaxDataParams = {};
+
+    ajaxCallParams.Type = "GET"; // GET type function
+    ajaxCallParams.Url = GET_ALL_CATEGORIES; // Pass Complete end point Url
+    ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+    let categories;
+
+    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+    {
+        console.log(result);
+
+        // check qpi request is success
+        if (result.status === 200)
+        {
+            // fetch the data
+            categories = result.responseJSON;
+            console.log(categories.data);
+
+            let temp = "";
+
+            categories.data.category.map((category) =>
+            {
+                // console.log(category._id)
+                temp += `<option value="${category.name}">${category.name}</option>`;
+            });
+            document.getElementById('categorySelector').innerHTML = temp;
+        }
+        else
+        {
+            console.log(result.status);
+        }
+
+        return categories;
+    });
+
     $.confirm({
         title   : 'Add Items!',
         content : ''
@@ -118,9 +155,14 @@ function addItem()
             + '<label>Item Img</label>'
             + '<input type="text" placeholder="Item img" class="itemImg form-control" required />'
             + '</div>'
+            // + '<div class="form-group">'
+            // + '<label>Item Category</label>'
+            // + '<input   placeholder="Item category" class="itemCategory form-control" required />'
+            // + '</div>'
             + '<div class="form-group">'
             + '<label>Item Category</label>'
-            + '<input type="text" placeholder="Item category" class="itemCategory form-control" required />'
+            + '<select class="itemCategory form-select" id="categorySelector" placeholder="Select item category" type="text" required>'
+            + '</select>'
             + '</div>'
             + '</form>',
         buttons : {
@@ -259,6 +301,40 @@ function addItem()
         },
     });
 }
+
+function getCategoryById(_id)
+{
+    console.log(_id);
+
+    const ajaxCallParams = {};
+    const ajaxDataParams = {};
+
+    ajaxCallParams.Type = "GET"; // GET type function
+    ajaxCallParams.Url = GET_CATEGORY_BY_ID + `${_id}`; // Pass Complete end point Url
+    ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+    let categories;
+
+    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+    {
+        console.log(result);
+
+        // check qpi request is success
+        if (result.status === 200)
+        {
+            // fetch the data
+            categories = result.responseJSON;
+            console.log(categories.data.category[0].name);
+        }
+        else
+        {
+            console.log(result.status);
+        }
+    });
+
+    return categories;
+}
+
 function editItem(_id)
 {
     console.log(_id);
@@ -328,8 +404,8 @@ function editItem(_id)
             + '</div>'
             + '<div class="form-group">'
             + '<label>Item Category</label>'
-            + '<input type="text" placeholder="Item category" class="itemCategory form-control" required />'
-            + '</div>'
+            + '<select class="itemCategory form-select" id="categorySelector" placeholder="Select item category" type="text" required>'
+            + '</select>'
             + '</form>',
         buttons : {
             formSubmit : {
@@ -407,7 +483,7 @@ function editItem(_id)
                         const ajaxDataParam = {};
 
                         ajaxCallParam.Type = "PUT"; // GET type function
-                        ajaxCallParam.Url = UPDATE_CATEGORY; // Pass Complete end point
+                        ajaxCallParam.Url = UPDATE_ITEM; // Pass Complete end point
                         ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
 
                         ajaxDataParam._id = _id;
@@ -465,7 +541,76 @@ function editItem(_id)
             // {
             //     category.name = this.$content.find('.categoryName').val();
             // });
-            console.log(Item.data.category[0].name);
+            console.log(Item.data.category[0].category);
+
+            const ajaxCallParam = {};
+            const ajaxDataParam = {};
+
+            ajaxCallParam.Type = "GET"; // GET type function
+            ajaxCallParam.Url = GET_ALL_CATEGORIES; // Pass Complete end point Url
+            ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+            let categories;
+
+            let temp = "";
+
+            ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
+            {
+                console.log(result);
+
+                // check qpi request is success
+                if (result.status === 200)
+                {
+                    // fetch the data
+                    categories = result.responseJSON;
+                    console.log(categories.data);
+
+                    categories.data.category.map((category) =>
+                    {
+                        const ajaxCallParams = {};
+                        const ajaxDataParams = {};
+
+                        ajaxCallParams.Type = "GET"; // GET type function
+                        ajaxCallParams.Url = GET_CATEGORY_BY_ID + `${Item.data.category[0].category}`; // Pass Complete end point Url
+                        ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+                        let categoryForList;
+
+                        ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+                        {
+                            console.log(result);
+
+                            // check qpi request is success
+                            if (result.status === 200)
+                            {
+                                // fetch the data
+                                categoryForList = result.responseJSON;
+                                console.log(categoryForList.data.category[0].name);
+
+                                document.getElementById('categorySelector').innerHTML = categoryForList.data.category[0].name;
+
+                                // console.log(category._id)
+                                temp += `<option value="${category.name}">${category.name}</option>`;
+                                document.getElementById('categorySelector').innerHTML = temp;
+                            }
+                            else
+                            {
+                                console.log(result.status);
+                            }
+                        });
+
+                        return categories;
+                    });
+                }
+                else
+                {
+                    console.log(result.status);
+                }
+
+                return categories;
+            });
+
+            console.log(getCategoryById(Item.data.category[0].category));
 
             this.$content.find('.itemName').val(Item.data.category[0].name);
             this.$content.find('.itemDescription').val(Item.data.category[0].description);
@@ -475,7 +620,7 @@ function editItem(_id)
             this.$content.find('.itemWeight').val(Item.data.category[0].weight);
             this.$content.find('.itemQty').val(Item.data.category[0].quantity);
             this.$content.find('.itemImg').val(Item.data.category[0].img);
-            this.$content.find('.itemCategory').val(Item.data.category[0].category);
+            this.$content.find('.itemCategory').val(temp);
 
             this.$content.find('form').on('submit', (e) =>
             {
@@ -534,6 +679,7 @@ function deleteItem(_id)
             },
             cancel()
             {
+
             },
         },
     });
