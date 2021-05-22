@@ -209,7 +209,7 @@ router.put('/', async (ctx, next) =>
         return;
     }
 
-    await userService.updateUser(
+    const data = await userService.updateUser(
         ctx.request.body.email,
         ctx.request.body.name,
         ctx.request.body.phone,
@@ -218,7 +218,7 @@ router.put('/', async (ctx, next) =>
     response.success = true;
     response.message = `User updated successfully.`;
     response.data = {
-        message : `User updated successfully.(${ctx.request.body.email})`,
+        user : data,
     };
     ctx.response.status = StatusCodes.OK;
     ctx.body = response;
