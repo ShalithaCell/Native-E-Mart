@@ -47,11 +47,20 @@
                             <span>category</span>
                         </a>
                     </li>
-                    <li class="sidebar-item  active">
+
+                    <li class="sidebar-item active ">
                         <a href="items.html" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Items</span>
                         </a>
+
+                    </li>
+                    <li class="sidebar-item ">
+                        <a href="delivery.html" class='sidebar-link'>
+                            <i class="bi bi-truck"></i>
+                            <span>Delivery</span>
+                        </a>
+
                     </li>
                 </ul>
             </div>
@@ -164,6 +173,18 @@
     // Simple Datatable
     let table1 = document.querySelector('#itemTable');
     let dataTable = new simpleDatatables.DataTable(table1);
+
+    $( document ).ready(function() {
+        const session = getSession();
+        if(session){
+            if(!session.authenticated){
+                window.location.href = "error-401.html";
+            }
+        }
+        else{
+            window.location.href = "error-401.html";
+        }
+    });
 </script>
 </body>
 

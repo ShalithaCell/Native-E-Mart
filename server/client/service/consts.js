@@ -13,34 +13,34 @@ const CREATE_USER_END_POINT = `${BASE_URL}user`;
 const UPDATE_USER_END_POINT = `${BASE_URL}user`;
 const RESET_PASSWORD_END_POINT = `${BASE_URL}user/reset-password`;
 
-const GET_ALL_DELIVERY = `http://localhost:5000/delivery/getAll`;
-const ADD_DELIVERY = `http://localhost:5000/delivery/create`;
-const DELETE_DELIVERY = 'http://localhost:5000/delivery/deleteById/';
-const UPDATE_DELIVERY = 'http://localhost:5000/delivery/update';
-const GET_DELIVERY_BY_ID = 'http://localhost:5000/delivery/getById/';
+const GET_ALL_DELIVERY = `${BASE_URL}delivery/getAll`;
+const ADD_DELIVERY = `${BASE_URL}delivery/create`;
+const DELETE_DELIVERY = `${BASE_URL}delivery/deleteById/`;
+const UPDATE_DELIVERY = `${BASE_URL}delivery/update`;
+const GET_DELIVERY_BY_ID = `${BASE_URL}delivery/getById/`;
 
-const GET_ALL_CATEGORIES = `http://localhost:5000/category/getAll`;
-const ADD_CATEGORY = `http://localhost:5000/category/create`;
-const GET_CATEGORY_BY_ID = 'http://localhost:5000/category/getById/';
-const DELETE_CATEGORY = 'http://localhost:5000/category/deleteById/';
-const UPDATE_CATEGORY = 'http://localhost:5000/category/update';
+const GET_ALL_CATEGORIES = `${BASE_URL}category/getAll`;
+const ADD_CATEGORY = `${BASE_URL}category/create`;
+const GET_CATEGORY_BY_ID = `${BASE_URL}category/getById/`;
+const DELETE_CATEGORY = `${BASE_URL}category/deleteById/`;
+const UPDATE_CATEGORY = `${BASE_URL}category/update`;
 
-const ADD_ITEM = `http://localhost:5000/item/create`;
-const GET_ALL_ITEMS = `http://localhost:5000/item/getAll`;
-const GET_ITEM_BY_ID = 'http://localhost:5000/item/getById/';
-const DELETE_ITEM = 'http://localhost:5000/item/deleteById/';
-const UPDATE_ITEM = 'http://localhost:5000/item/update';
-
-
-
-const GET_CART=`http://localhost:5000/cart/getAll`;
-const ADD_CART= `http://localhost:5000/cart/create`;
-const UPDATE_CART = 'http://localhost:5000/cart/update';
-const DELETE_CART = 'http://localhost:5000/cart/deleteById/';
-const GET_CART_BY_ID = 'http://localhost:5000/cart/getById/';
+const ADD_ITEM = `${BASE_URL}item/create`;
+const GET_ALL_ITEMS = `${BASE_URL}item/getAll`;
+const GET_ITEM_BY_ID = `${BASE_URL}item/getById/`;
+const DELETE_ITEM = `${BASE_URL}item/deleteById/`;
+const UPDATE_ITEM = `${BASE_URL}item/update`;
 
 
-const ADD_ORDER= `http://localhost:5000/order/create`;
-const GET_ORDER=`http://localhost:5000/order/getAll`;
+
+const GET_CART=`${BASE_URL}cart/getAll`;
+const ADD_CART= `${BASE_URL}cart/create`;
+const UPDATE_CART = `${BASE_URL}cart/update`;
+const DELETE_CART = `${BASE_URL}cart/deleteById/`;
+const GET_CART_BY_ID = `${BASE_URL}cart/getById/`;
+
+
+const ADD_ORDER= `${BASE_URL}order/create`;
+const GET_ORDER=`${BASE_URL}order/getAll`;
 
 

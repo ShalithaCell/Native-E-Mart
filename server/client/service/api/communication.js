@@ -1,5 +1,12 @@
 // General function for all ajax calls
 function ajaxCall(callParams, dataParams, callback) {
+
+    const session = getSession();
+    let token = '';
+    if(session){
+        token = session.token;
+    }
+
     $.ajax({
         type: callParams.Type,
         url: callParams.Url,
@@ -7,6 +14,9 @@ function ajaxCall(callParams, dataParams, callback) {
         dataType: callParams.DataType,
         data: dataParams,
         cache: true,
+        headers: {
+            "Authorization": `Bearer ${token}`
+        },
         complete: callback
     });
 }

@@ -171,6 +171,18 @@
     // Simple Datatable
     let table1 = document.querySelector('#deliveryTable');
     let dataTable = new simpleDatatables.DataTable(table1);
+
+    $( document ).ready(function() {
+        const session = getSession();
+        if(session){
+            if(!session.authenticated){
+                window.location.href = "error-401.html";
+            }
+        }
+        else{
+            window.location.href = "error-401.html";
+        }
+    });
 </script>
 </body>
 

@@ -55,7 +55,7 @@
 
                     </li>
                     <li class="sidebar-item  active">
-                        <a href="items.html" class='sidebar-link'>
+                        <a href="delivery.html" class='sidebar-link'>
                             <i class="bi bi-truck"></i>
                             <span>Delivery</span>
                         </a>
@@ -204,7 +204,17 @@
 <script src="../service/api/communication.js"></script>
 <script>
     console.log("called")
-
+    $( document ).ready(function() {
+        const session = getSession();
+        if(session){
+            if(!session.authenticated){
+                window.location.href = "error-401.html";
+            }
+        }
+        else{
+            window.location.href = "error-401.html";
+        }
+    });
 
 </script>
 

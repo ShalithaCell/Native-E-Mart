@@ -2,16 +2,17 @@ const Router = require('koa-router');
 const StatusCodes = require('http-status-codes');
 const { CategoryType, Response } = require('../../types');
 const { CategoryService } = require('../../services');
+const { koaJwt } = require('../../middlewares');
 
 // Prefix all routes with: /category
 const router = new Router({
-    prefix : '/category',
+    prefix : '/api/category',
 });
 
 // Routes will go here
 
 // category create method
-router.post('/create', async (ctx, next) =>
+router.post('/create', koaJwt, async (ctx, next) =>
 {
     const params = ctx.request.body;
 
@@ -146,7 +147,7 @@ router.get('/getById/:_id', async (ctx, next) =>
     next().then();
 });
 
-router.delete('/deleteById/:_id', async (ctx, next) =>
+router.delete('/deleteById/:_id', koaJwt, async (ctx, next) =>
 {
     const { params } = ctx;
 
@@ -182,7 +183,7 @@ router.delete('/deleteById/:_id', async (ctx, next) =>
     next().then();
 });
 
-router.put('/update', async (ctx, next) =>
+router.put('/update', koaJwt, async (ctx, next) =>
 {
     const params = ctx.request.body;
 

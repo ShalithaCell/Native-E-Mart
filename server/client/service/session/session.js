@@ -6,7 +6,7 @@ function renderNavigationBar(page){
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html"><img src="./assets/images/core-img/logo.png" alt=""></a>
+                <a href="index.html"><img src="./assets/images/logo/logo.png" alt=""></a>
             </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">

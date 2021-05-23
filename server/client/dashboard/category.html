@@ -38,21 +38,27 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="sidebar-item active ">
+                    <li class="sidebar-item  active">
                         <a href="category.html" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>category</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
+                    <li class="sidebar-item  ">
+                        <a href="items.html" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
-                            <span>Components</span>
+                            <span>Items</span>
                         </a>
 
                     </li>
+                    <li class="sidebar-item">
+                        <a href="delivery.html" class='sidebar-link'>
+                            <i class="bi bi-truck"></i>
+                            <span>Delivery</span>
+                        </a>
 
+                    </li>
 
                 </ul>
             </div>
@@ -188,6 +194,20 @@
 
 
 <script src="../assets/js/main.js"></script>
+
+<script>
+    $( document ).ready(function() {
+        const session = getSession();
+        if(session){
+            if(!session.authenticated){
+                window.location.href = "error-401.html";
+            }
+        }
+        else{
+            window.location.href = "error-401.html";
+        }
+    });
+</script>
 </body>
 
 </html>

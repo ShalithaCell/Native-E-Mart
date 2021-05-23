@@ -5,7 +5,7 @@ const { OrderService } = require('../../services');
 
 // Prefix all routes with: /item
 const router = new Router({
-    prefix : '/order',
+    prefix : '/api/order',
 });
 
 // Routes will go here
