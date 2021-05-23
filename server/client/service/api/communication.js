@@ -13,8 +13,10 @@ function ajaxCall(callParams, dataParams, callback) {
         quietMillis: 100,
         dataType: callParams.DataType,
         data: dataParams,
-        cache: true,
+        cache: false,
+        crossDomain: true,
         headers: {
+            "Access-Control-Allow-Origin": "*",
             "Authorization": `Bearer ${token}`
         },
         complete: callback
