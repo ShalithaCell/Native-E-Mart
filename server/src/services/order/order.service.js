@@ -24,27 +24,17 @@ const OrderService = {
         try
         {
             // check data validation
-            const request = Object.setPrototypeOf(orderData, OrderType.prototype);
+           // const request = Object.setPrototypeOf(orderData, OrderType.prototype);
 
             console.log("in service");
 
-            if (!request.isValid())
-            {
-                return null;
-            }
-
-            // check item
-            const item = await ItemsService.findByItemCode(request.itemCode);
-
-            console.log(item);
-
-            if (!item)
-            {
-                return null;
-            }
+            // if (!request.isValid())
+            // {
+            //     return null;
+            // }
 
             // check user
-            const user = await UserService.findByEmail(request.user);
+            const user = await UserService.findByEmail(orderData.user);
 
             console.log(user);
 
@@ -53,25 +43,31 @@ const OrderService = {
                 return null;
             }
 
-            // check cart
-            const cart = await CartService.findById(request.cart);
+            const cartObjs = orderData.cart.map((order) =>
+            {
+                const cart = CartService.findById(orderData.cart);
 
-            console.log(cart);
+                if (!cart)
+                {
+                    return null;
+                }
+            });
 
-            if (!cart)
+            if(cartObjs.length < 1)
             {
                 return null;
             }
+            // check cart
+            // const cart = await CartService.findById(orderData.cart);
+
+            // console.log(cart);
 
             const order = new Order({
-                name            : request.name,
-                qty             : request.qty,
-                discount        : request.discount,
-                shippingDetails : request.shippingDetails,
-                total           : request.total,
-                item            : item[0]._id,
-                user            : user._id,
-                cart            : cart[0]._id,
+                qty             : orderData.qty,
+                shippingDetails : orderData.shippingDetails,
+                total           : orderData.total,
+                user            : orderData._id,
+                cart            : cartObjs,
                 isActive        : true,
             });
 

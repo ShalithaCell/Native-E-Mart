@@ -37,3 +37,10 @@ const GET_CART=`http://localhost:5000/cart/getAll`;
 const ADD_CART= `http://localhost:5000/cart/create`;
 const UPDATE_CART = 'http://localhost:5000/cart/update';
 const DELETE_CART = 'http://localhost:5000/cart/deleteById/';
+const GET_CART_BY_ID = 'http://localhost:5000/cart/getById/';
+
+
+const ADD_ORDER= `http://localhost:5000/order/create`;
+const GET_ORDER=`http://localhost:5000/order/getAll`;
+
+
