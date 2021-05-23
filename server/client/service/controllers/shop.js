@@ -1,5 +1,6 @@
 $( document ).ready(() => {
     const header = renderNavigationBar('shop');
+
     $("#header").append(header);
 
     const ajaxCallParams = {};
@@ -67,7 +68,7 @@ $( document ).ready(() => {
                 temp += "                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>";
                 temp += "               </div>";
                 temp += "                <div class=\"cart\">";
-                temp += `                    <a href=\"#\" onclick=addToCart("${item._id}") data-toggle=\"tooltip\" data-placement=\"left\" title=\"Add to Cart\"><img src=\"./assets/images/core-img/cart.png\" alt=\"\"></a>`;
+                temp += `                    <a href="#" onclick=addToCart("${item._id}") data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="./assets/images/core-img/cart.png" alt=""></a>`;
                 temp += "                </div>";
                 temp += "           </div>";
                 temp += "        </div>";
