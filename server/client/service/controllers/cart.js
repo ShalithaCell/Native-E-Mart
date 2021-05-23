@@ -175,31 +175,13 @@ function getCart() {
                         $('.err-cartName').removeClass('d-none').html(result.responseJSON.message);
                         console.log(result.status);
                     }
-
                 });
-
             });
-
-
-            console.log(total)
-
-            let tem ='';
-            tem += "<div class=\"cart-summary\" >"
-            tem += "<h5>Cart Total</h5>";
-            tem += "<ul className=\"summary-table\">";
-                tem += "    <li><span>subtotal:</span> <span>$140.00</span></li>";
-                tem +=  "   <li><span>delivery:</span> <span>Free</span></li>";
-                tem +=   " <li><span>total:</span> <span>$140.00</span></li>";
-                tem += "</ul>";
-            tem += "<div className=\"cart-btn mt-100\">";
-                tem +="     <a href=\"checkout.html\" className=\"btn amado-btn w-100\" onClick>Checkout</a>";
-                tem +=" </div>";
-            tem +=" </div>";
 
             // tem += "<td>" + itemData.employee_salary + "</td></tr>";
             /********************/
 
-            document.getElementById('cartSummary').innerHTML = tem;
+            // document.getElementById('cartSummary').innerHTML = tem;
 
         } else {
             console.log(result.status)

@@ -33,7 +33,7 @@ function getAllItems()
                 const ajaxDataParam = {};
 
                 ajaxCallParam.Type = "GET"; // GET type function
-                ajaxCallParam.Url = 'http://localhost:5000/category/getById/' + `${item.category}`; // Pass Complete end point Url
+                ajaxCallParam.Url = GET_CATEGORY_BY_ID + `${item.category}`; // Pass Complete end point Url
                 ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
 
                 ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
