@@ -31,16 +31,14 @@ const GET_ITEM_BY_ID = `${BASE_URL}item/getById/`;
 const DELETE_ITEM = `${BASE_URL}item/deleteById/`;
 const UPDATE_ITEM = `${BASE_URL}item/update`;
 
-
-
 const GET_CART=`${BASE_URL}cart/getAll`;
 const ADD_CART= `${BASE_URL}cart/create`;
 const UPDATE_CART = `${BASE_URL}cart/update`;
 const DELETE_CART = `${BASE_URL}cart/deleteById/`;
 const GET_CART_BY_ID = `${BASE_URL}cart/getById/`;
 
-
 const ADD_ORDER= `${BASE_URL}order/create`;
 const GET_ORDER=`${BASE_URL}order/getAll`;
 
-
+const ADD_CARD_PAYMENT = 'http://localhost:5100/api/v1/payment/card';
+const ADD_PHONE_PAYMENT = 'http://localhost:5100/api/v1/payment/phone';

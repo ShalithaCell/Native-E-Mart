@@ -10,7 +10,6 @@ function addOrder(_id) {
     const ajaxCallParams = {};
     const ajaxDataParams = {};
 
-
     const sessionData = getSession();
     console.log(sessionData.authData.user.email);
     let userEmail = sessionData.authData.user.email;
@@ -19,8 +18,7 @@ function addOrder(_id) {
     console.log(cartItem.cart.item._id);
     let userItem = cartItem.cart.item._id;
 
-
-        ajaxDataParams.name  = userEmail;
+        ajaxDataParams.name = userEmail;
         ajaxDataParams.item = _id;
         ajaxDataParams.cart = id;
         ajaxDataParams.discount = 0,
@@ -66,8 +64,7 @@ function addOrder(_id) {
     });
 }
 
-
-function getOder() {
+function getOder(){
 
     let orderItem;
 
