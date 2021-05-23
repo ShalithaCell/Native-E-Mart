@@ -56,7 +56,7 @@ function addToCart(_id) {
             // check qpi request is success
             if (result.status === 200) {
                 console.log("add category success");
-                // window.location.href = '../../dashboard/cart.html';
+                window.location.href = '../../cart.html';
             } else if (result.status === 403) {
                 // show the error message
                 $('.err-cartName').removeClass('d-none').html(`${result.responseJSON.message}`);
@@ -85,8 +85,9 @@ function getCart() {
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
     let cart;
+    let total = 0;
 
-
+    let itemsInCart = [];
 
     ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) => {
 
@@ -122,8 +123,13 @@ function getCart() {
                     if (result.status === 200) {
                         console.log("get cart success");
                         cartItem = result.responseJSON;
-                        console.log(cartItem.data.category[0].name);
+                        console.log(cartItem.data);
 
+                        itemsInCart.push(cartItem.data.category[0].sellPrice);
+
+                        total = total + cartItem.data.category[0].sellPrice;
+
+                        console.log(total)
                         /*******/
                         temp += "<tr>";
                         temp += " <td className=\"cart_product_img\">";
@@ -142,7 +148,7 @@ function getCart() {
                         temp += " <span className=\"qty-minus\"";
                         temp += " onClick=\"var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;\">\" + \"<i";
                         temp += "className=\"fa fa-minus\" aria-hidden=\"true\"></i></span>";
-                        temp += "<input type=\"number\" className=\"qty-text\" id=\"qty\" step=\"1\" min=\"1\" max=\"300\" ";
+                        temp += `<input type=\"number\" className="qty-text" id=\"qtyCart\" step=\"1\" min=\"1\" max=\"300\" `;
                         temp += `name=\"quantity\" value="${cart.qty}">`;
                         temp += " <span className=\"qty-plus\"";
                         temp += "  onClick=\"var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;\"><i";
@@ -150,8 +156,8 @@ function getCart() {
                         temp += " </div>";
                         temp += " </div>";
                         temp += " </td>";
-                        temp += `<td><button class="btn btn-warning" onClick=editCategory("${cartItem.data.category[0]._id}")>Update</button></td>`;
-                        temp += `<td><button class="btn btn-danger" onClick=deleteCategory("${cartItem.data.category[0]._id}")>Delete</button></td>`;
+                        temp += `<td><button class="btn btn-warning" onClick=editCart("${cart._id}")>Update</button></td>`;
+                        temp += `<td><button class="btn btn-danger" onClick=deleteCart("${cart._id}")>Delete</button></td>`;
                         temp += "</tr>";
                         // temp += "<td>" + itemData.employee_name + "</td>";
                         // temp += "<td>" + itemData.employee_salary + "</td></tr>";
@@ -172,173 +178,228 @@ function getCart() {
 
                 });
 
-
-
-
-
             });
+
+
+            console.log(total)
+
+            let tem ='';
+            tem += "<div class=\"cart-summary\" >"
+            tem += "<h5>Cart Total</h5>";
+            tem += "<ul className=\"summary-table\">";
+                tem += "    <li><span>subtotal:</span> <span>$140.00</span></li>";
+                tem +=  "   <li><span>delivery:</span> <span>Free</span></li>";
+                tem +=   " <li><span>total:</span> <span>$140.00</span></li>";
+                tem += "</ul>";
+            tem += "<div className=\"cart-btn mt-100\">";
+                tem +="     <a href=\"checkout.html\" className=\"btn amado-btn w-100\" onClick>Checkout</a>";
+                tem +=" </div>";
+            tem +=" </div>";
+
+            // tem += "<td>" + itemData.employee_salary + "</td></tr>";
+            /********************/
+
+            document.getElementById('cartSummary').innerHTML = tem;
 
         } else {
             console.log(result.status)
         }
 
+        console.log(itemsInCart)
+
         return cart;
     });
 
-    function getItemForCart(_id){
+}
 
-    }
+function editCart(_id) {
+    console.log(_id);
 
 
-    function editCart(_id) {
-        console.log(_id);
+    const ajaxCallParams = {};
+    const ajaxDataParams = {};
 
-        const ajaxCallParams = {};
-        const ajaxDataParams = {};
+    ajaxCallParams.Type = "GET"; // GET type function
+    ajaxCallParams.Url = GET_CART_BY_ID + `${_id}`; // Pass Complete end point
+    ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
-        ajaxCallParams.Type = "GET"; // GET type function
-        ajaxCallParams.Url = GET_CART_BY_Id + `${_id}`; // Pass Complete end point
-        ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+    let cart = '';
 
-        let cart = '';
+    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+    {
+        console.log(result);
 
-        ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) => {
-            console.log(result);
+        // check qpi request is success
+        if (result.status === 200)
+        {
+            // fetch the data
+            cart = result.responseJSON;
+            console.log(cart.data.category[0].qty);
 
-            // check qpi request is success
-            if (result.status === 200) {
-                // fetch the data
-                cart = result.responseJSON;
-                console.log(cart.data);
-            } else {
-                console.log(result.status);
-            }
-            // return cart;
-        });
 
-        $.confirm({
-            title: 'Edit Cart!',
-            content: ''
-                + '<form action="" class="formName">'
-                + '<div class="form-group">'
-                + '<label>Category Name</label>'
-                + '<input type="text" placeholder="Cart Name" class="cartName form-control" required />'
-                + '</div>'
-                + '</form>',
-            buttons: {
-                formSubmit: {
-                    text: 'Submit',
-                    btnClass: 'btn-blue',
-                    action() {
-                        const name = this.$content.find('.cartName').val();
 
-                        if (!name) {
-                            $.alert('provide a valid name');
 
-                            return false;
-                        } else {
-                            const ajaxCallParam = {};
-                            const ajaxDataParam = {};
+        }
+        else
+        {
+            console.log(result.status);
+        }
+        // return category;
+    });
 
-                            ajaxCallParam.Type = "PUT"; // GET type function
-                            ajaxCallParam.Url = UPDATE_CART; // Pass Complete end point
-                            ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
 
-                            const cartName = $('.cartName').val();
+    $.confirm({
+        title   : 'Edit Category!',
+        content : ''
+            + '<form action="" class="formName">'
+            + '<div class="form-group">'
+            + '<label>Category Name</label>'
+            + '<input type="number" placeholder="Category Name" class="updateQty form-control" required />'
+            + '</div>'
+            + '</form>',
+        buttons : {
+            formSubmit : {
+                text     : 'Submit',
+                btnClass : 'btn-blue',
+                action () {
+                    const updateQty = $('.updateQty').val();
 
-                            ajaxDataParam._id = _id;
-                            ajaxDataParam.name = cartName;
+                    if (!updateQty)
+                    {
+                        $.alert('provide a valid name');
 
-                            ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) => {
-                                console.log(result);
+                        return false;
+                    }
+                    else
+                    {
+                        const ajaxCallParam = {};
+                        const ajaxDataParam = {};
 
-                                // check qpi request is success
-                                if (result.status === 200) {
-                                    // fetch the data
-                                    cart = result.responseJSON;
-                                    console.log(`update + ${cart.data}`);
-                                    $.confirm({
-                                        title: '',
-                                        content: 'Cart updated!',
-                                        buttons: {
-                                            ok() {
-                                                window.location.href = '../../dashboard/cart.html';
-                                            },
+                        ajaxCallParam.Type = "PUT"; // GET type function
+                        ajaxCallParam.Url = UPDATE_CART // Pass Complete end point
+                        ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+                        const sessionData = getSession();
+                        console.log(sessionData.authData.user.email);
+
+                        let userEmail = sessionData.authData.user.email;
+
+                        // console.log(qty);
+
+
+                        ajaxDataParam._id = _id;
+                        ajaxDataParam.qty = updateQty;
+                        ajaxDataParam.name = 'img';
+                        ajaxDataParam.item = cart.data.category[0].item;
+                        ajaxDataParam.user = userEmail;
+
+                        ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
+                        {
+                            console.log(result);
+
+                            // check qpi request is success
+                            let cart;
+                            if (result.status === 200) {
+                                // fetch the data
+                                cart = result.responseJSON;
+                                console.log(cart.data);
+                                $.confirm({
+                                    title: '',
+                                    content: 'Item updated!',
+                                    buttons: {
+                                        ok() {
+                                            window.location.href = '../../cart.html';
                                         },
-                                    });
-                                } else {
-                                    console.log(result.status);
-                                }
-                                // return cart;
-                            });
-                        }
-                    },
-                },
-                cancel() {
-                    // close
+                                    },
+                                });
+                            } else {
+                                console.log(result.status);
+                            }
+                            // return category;
+                        });
+                    }
                 },
             },
-            onContentReady() {
-                // bind to events
-                const jc = this;
+            cancel()
+            {
+                // close
+            },
+        },
+        onContentReady()
+        {
+            // bind to events
+            const jc = this;
 
-                // categories.map((category) =>
-                // {
-                //     category.name = this.$content.find('.categoryName').val();
-                // });
-                console.log(cart.data.cart[0]);
+            // categories.map((category) =>
+            // {
+            //     category.name = this.$content.find('.categoryName').val();
+            // });
 
-                this.$content.find('.cartName').val(cart.data.cart[0].name);
+            console.log(cart.data.category[0].qty)
 
-                this.$content.find('form').on('submit', (e) => {
-                    // if the user submits the form by pressing enter in the field.
-                    e.preventDefault();
-                    jc.$$formSubmit.trigger('click'); // reference the button and click it
+            this.$content.find('.updateQty').val(cart.data.category[0].qty);
+
+            this.$content.find('form').on('submit', (e) =>
+            {
+                // if the user submits the form by pressing enter in the field.
+                e.preventDefault();
+                jc.$$formSubmit.trigger('click'); // reference the button and click it
+            });
+        },
+    });
+
+    // const qty = $('.qty-text').val();
+
+
+
+
+
+
+
+}
+
+function deleteCart(_id) {
+    console.log(_id);
+
+    $.confirm({
+        title: 'Confirm!',
+        content: 'Delete this Item?',
+        buttons: {
+            confirm() {
+                const ajaxCallParams = {};
+                const ajaxDataParams = {};
+
+                ajaxCallParams.Type = "DELETE"; // GET type function
+                ajaxCallParams.Url = DELETE_CART + `${_id}`; // Pass Complete end point Url e-g Payment Controller, Create Action
+                ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+                ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) => {
+                    // check qpi request is success
+                    if (result.status === 200) {
+
+                        console.log(result.responseJSON)
+
+                        $.confirm({
+                            title: '',
+                            content: 'Item Deleted!',
+                            buttons: {
+                                ok() {
+                                    window.location.href = '../../cart.html';
+                                },
+                            },
+                        });
+                    } else if (result.status === 403) {
+                        // show the error message
+                        $('.err-cartName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
+                    } else if (result.status === 400) {
+                        // show the error message
+                        $('.err-cartName').removeClass('d-none').html(result.responseJSON.message);
+                    }
                 });
             },
-        });
-    }
-
-    function deleteCart(_id) {
-        console.log(_id);
-
-        $.confirm({
-            title: 'Confirm!',
-            content: 'Delete this Cart?',
-            buttons: {
-                confirm() {
-                    const ajaxCallParams = {};
-                    const ajaxDataParams = {};
-
-                    ajaxCallParams.Type = "DELETE"; // GET type function
-                    ajaxCallParams.Url = DELETE_CART + `${_id}`; // Pass Complete end point Url e-g Payment Controller, Create Action
-                    ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
-
-                    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) => {
-                        // check qpi request is success
-                        if (result.status === 200) {
-                            $.confirm({
-                                title: '',
-                                content: 'Cart Deleted!',
-                                buttons: {
-                                    ok() {
-                                        window.location.href = '../../dashboard/cart.html';
-                                    },
-                                },
-                            });
-                        } else if (result.status === 403) {
-                            // show the error message
-                            $('.err-cartName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
-                        } else if (result.status === 400) {
-                            // show the error message
-                            $('.err-cartName').removeClass('d-none').html(result.responseJSON.message);
-                        }
-                    });
-                },
-                cancel() {
-                },
+            cancel() {
             },
-        });
+        },
+    });
 
-    }
 }

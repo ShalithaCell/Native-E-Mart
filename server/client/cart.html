@@ -94,16 +94,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
-                        <div class="cart-summary">
-                            <h5>Cart Total</h5>
-                            <ul class="summary-table">
-                                <li><span>subtotal:</span> <span>$140.00</span></li>
-                                <li><span>delivery:</span> <span>Free</span></li>
-                                <li><span>total:</span> <span>$140.00</span></li>
-                            </ul>
-                            <div class="cart-btn mt-100">
-                                <a href="checkout.html" class="btn amado-btn w-100">Checkout</a>
-                            </div>
+                        <div id="cartSummary">
+
                         </div>
                     </div>
                 </div>
@@ -167,6 +159,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 
     <script src="./assets/js/home/jquery/jquery-2.2.4.min.js"></script>
+    <!-- controller js -->
+    <script src="./service/controllers/cart.js"></script>
 
 <!--    <script src="./assets/js/home/jquery/jquery-2.2.4.min.js"></script>-->
     <!-- Popper js -->
@@ -191,11 +185,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="./service/session/session.js"></script>
     <!-- common controller js -->
     <script src="./service/controllers/public.js"></script>
-    <!-- controller js -->
-    <script src="./service/controllers/cart.js"></script>
+
     <!-- auth controller js -->
     <script src="./service/controllers/auth.js"></script>
     <script> getCart()</script>
+
+
+
 
 </body>
 

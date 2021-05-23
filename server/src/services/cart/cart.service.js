@@ -113,7 +113,7 @@ const CartService = {
                 { _id: ObjectId(cartData._id) },
                 {
                     $set : {
-
+                        qty  : cartData.qty,
                         name : cartData.name,
                         item : item[0]._id,
                         user : user._id,
