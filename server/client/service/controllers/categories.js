@@ -27,8 +27,8 @@ function getAllCategories()
                 // console.log(category._id)
                 temp += "<tr>";
                 temp += `<td>${category.name}</td>`;
-                temp += `<td><button class=\"btn btn-warning\" onClick=editCategory("${category._id}")>Edit</button></td>`;
-                temp += `<td><button class=\"btn btn-danger\" onClick=deleteCategory("${category._id}")>Delete</button></td>`;
+                temp += `<td><button class="btn btn-warning" onClick=editCategory("${category._id}")>Edit</button></td>`;
+                temp += `<td><button class="btn btn-danger" onClick=deleteCategory("${category._id}")>Delete</button></td>`;
                 temp += "</tr>";
             });
             document.getElementById('categoryData').innerHTML = temp;
@@ -82,7 +82,7 @@ function addCategory()
         else if (result.status === 403)
         {
             // show the error message
-            $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
+            $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}`);
         }
         else if (result.status === 400)
         {
@@ -100,7 +100,7 @@ function editCategory(_id)
     const ajaxDataParams = {};
 
     ajaxCallParams.Type = "GET"; // GET type function
-    ajaxCallParams.Url = GET_CATEGORY_BY_ID + `${_id}`; // Pass Complete end point Url e-g Payment Controller, Create Action
+    ajaxCallParams.Url = GET_CATEGORY_BY_ID + `${_id}`; // Pass Complete end point
     ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
     let categories = '';
@@ -123,11 +123,6 @@ function editCategory(_id)
         // return category;
     });
 
-    categories.map((category) => 
-    {
-        category.name = this.$content.find('.categoryName').val();
-    });
-
     $.confirm({
         title   : 'Edit Category!',
         content : ''
@@ -144,14 +139,54 @@ function editCategory(_id)
                 action () {
                     const name = this.$content.find('.categoryName').val();
 
-                    if (!name) {
+                    if (!name)
+                    {
                         $.alert('provide a valid name');
 
                         return false;
                     }
+                    else
+                    {
+                        const ajaxCallParam = {};
+                        const ajaxDataParam = {};
 
-                    // $.alert('Category updated');
-                    window.location.href = '../../dashboard/category.html';
+                        ajaxCallParam.Type = "PUT"; // GET type function
+                        ajaxCallParam.Url = UPDATE_CATEGORY; // Pass Complete end point
+                        ajaxCallParam.DataType = "JSON"; // Return data type e-g Html, Json etc
+
+                        const categoryName = $('.categoryName').val();
+
+                        ajaxDataParam._id = _id;
+                        ajaxDataParam.name = categoryName;
+
+                        ajaxCall(ajaxCallParam, ajaxDataParam, (result, data, settings) =>
+                        {
+                            console.log(result);
+
+                            // check qpi request is success
+                            if (result.status === 200)
+                            {
+                                // fetch the data
+                                categories = result.responseJSON;
+                                console.log(`update + ${categories.data}`);
+                                $.confirm({
+                                    title   : '',
+                                    content : 'Category updated!',
+                                    buttons : {
+                                        ok()
+                                        {
+                                            window.location.href = '../../dashboard/category.html';
+                                        },
+                                    },
+                                });
+                            }
+                            else
+                            {
+                                console.log(result.status);
+                            }
+                            // return category;
+                        });
+                    }
                 },
             },
             cancel()
@@ -163,6 +198,14 @@ function editCategory(_id)
         {
             // bind to events
             const jc = this;
+
+            // categories.map((category) =>
+            // {
+            //     category.name = this.$content.find('.categoryName').val();
+            // });
+            console.log(categories.data.category[0]);
+
+            this.$content.find('.categoryName').val(categories.data.category[0].name);
 
             this.$content.find('form').on('submit', (e) =>
             {
@@ -178,30 +221,50 @@ function deleteCategory(_id)
 {
     console.log(_id);
 
-    const ajaxCallParams = {};
-    const ajaxDataParams = {};
+    $.confirm({
+        title   : 'Confirm!',
+        content : 'Delete this Category?',
+        buttons : {
+            confirm()
+            {
+                const ajaxCallParams = {};
+                const ajaxDataParams = {};
 
-    ajaxCallParams.Type = "DELETE"; // GET type function
-    ajaxCallParams.Url = DELETE_CATEGORY+`${_id}`; // Pass Complete end point Url e-g Payment Controller, Create Action
-    ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
+                ajaxCallParams.Type = "DELETE"; // GET type function
+                ajaxCallParams.Url = DELETE_CATEGORY+`${_id}`; // Pass Complete end point Url e-g Payment Controller, Create Action
+                ajaxCallParams.DataType = "JSON"; // Return data type e-g Html, Json etc
 
-    ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
-    {
-        // check qpi request is success
-        if (result.status === 200)
-        {
-            console.log("add category success");
-            window.location.href = '../../dashboard/category.html';
-        }
-        else if (result.status === 403)
-        {
-            // show the error message
-            $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
-        }
-        else if (result.status === 400)
-        {
-            // show the error message
-            $('.err-categoryName').removeClass('d-none').html(result.responseJSON.message);
-        }
+                ajaxCall(ajaxCallParams, ajaxDataParams, (result, data, settings) =>
+                {
+                    // check qpi request is success
+                    if (result.status === 200)
+                    {
+                        $.confirm({
+                            title   : '',
+                            content : 'Category Deleted!',
+                            buttons : {
+                                ok()
+                                {
+                                    window.location.href = '../../dashboard/category.html';
+                                },
+                            },
+                        });
+                    }
+                    else if (result.status === 403)
+                    {
+                        // show the error message
+                        $('.err-categoryName').removeClass('d-none').html(`${result.responseJSON.message}, ${result.responseJSON.data.message.message}`);
+                    }
+                    else if (result.status === 400)
+                    {
+                        // show the error message
+                        $('.err-categoryName').removeClass('d-none').html(result.responseJSON.message);
+                    }
+                });
+            },
+            cancel()
+            {
+            },
+        },
     });
 }

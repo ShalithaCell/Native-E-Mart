@@ -121,22 +121,10 @@ function myAccountOnClickHandler() {
                         // fetch the data
                         const authData = result.responseJSON;
 
-                        $.confirm({
-                            title: 'Congratulations',
-                            content: authData.message,
-                            type: 'green',
-                            typeAnimated: true,
-                            buttons: {
-                                gotoHome: {
-                                    text: 'Goto Home',
-                                    btnClass: 'btn-green',
-                                    action() {
-                                        window.location.href = '../index.html';
-                                    },
-                                },
-                            },
-                        });
-
+                        const oldData  = getSession();
+                        console.log();
+                        oldData.authData.user = authData.data.user;
+                        SetSession(oldData);
                     }
                 });
             });

@@ -40,7 +40,7 @@ const CartService = {
             if (existingCart.length > 0) return null;
 
             // check item
-            const item = await ItemsService.findByItemCode(request.item);
+            const item = await ItemsService.findById(request.item);
 
             console.log(`item + ${item[0]._id}`);
 
@@ -92,7 +92,7 @@ const CartService = {
 
             if (existingItem.length < 1) return null;
 
-            const item = await ItemsService.findByItemCode(cartData.item);
+            const item = await ItemsService.findById(cartData.item);
 
             console.log(`item + ${item[0]}`);
             if (!item)
@@ -113,7 +113,7 @@ const CartService = {
                 { _id: ObjectId(cartData._id) },
                 {
                     $set : {
-
+                        qty  : cartData.qty,
                         name : cartData.name,
                         item : item[0]._id,
                         user : user._id,

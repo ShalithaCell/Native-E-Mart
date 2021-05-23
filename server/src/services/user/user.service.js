@@ -86,13 +86,15 @@ const UserService = {
     },
     updateUser : async (email, name, phone) =>
     {
-        User.updateOne({ email }, {
+        await User.updateOne({ email }, {
             name,
             phone,
         }, (err, affected, resp) =>
         {
             console.log(resp);
         });
+
+        return UserService.findByEmail(email);
     },
     activeAccount : async (email) =>
     {

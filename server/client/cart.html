@@ -80,12 +80,13 @@
                                         <th>Name</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
+                                        <th>Update</th>
+                                        <th>Delete</th>
+
                                     </tr>
                                 </thead>
                                 <tbody id="cartData">
-
-
-
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -102,6 +103,7 @@
                                 <a href="checkout.html" class="btn amado-btn w-100">Checkout</a>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -164,14 +166,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 
     <script src="./assets/js/home/jquery/jquery-2.2.4.min.js"></script>
-
+    <!-- controller js -->
     <script src="./service/controllers/cart.js"></script>
-    <script src="./service/consts.js"></script>
-    <!-- ##### session file ##### -->
-    <script src="./service/session/session.js"></script>
-    <!-- ##### communication module file ##### -->
-    <script src="./service/api/communication.js"></script>
-
 
 <!--    <script src="./assets/js/home/jquery/jquery-2.2.4.min.js"></script>-->
     <!-- Popper js -->
@@ -196,11 +192,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="./service/session/session.js"></script>
     <!-- common controller js -->
     <script src="./service/controllers/public.js"></script>
-    <!-- controller js -->
-    <script src="./service/controllers/cart.js"></script>
+
+    <script src="./service/controllers/shop.js"></script>
+
     <!-- auth controller js -->
     <script src="./service/controllers/auth.js"></script>
     <script> getCart()</script>
+
+
+
 
 </body>
 

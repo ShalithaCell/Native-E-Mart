@@ -27,5 +27,5 @@ module.exports = {
     TokenService,
     dataManagerService,
     CartService,
-    OrderService
+    OrderService,
 };

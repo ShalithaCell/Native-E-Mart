@@ -1,5 +1,6 @@
 $( document ).ready(() => {
     const header = renderNavigationBar('shop');
+
     $("#header").append(header);
 
     const ajaxCallParams = {};
@@ -52,8 +53,8 @@ $( document ).ready(() => {
                 temp += "            <!-- Product Meta Data -->";
                 temp += "            <div class=\"product-meta-data\">";
                 temp += "                <div class=\"line\"></div>";
-                temp += "                <p class=\"product-price\">$180</p>";
-                temp += "                <a href=\"product-details.html\">";
+                temp += `                <p class=\"product-price\">${item.sellPrice}</p>`;
+                temp += "                <a href=\"#\">";
                 temp += `                    <h6>${item.name}</h6>`;
                 temp += "                </a>";
                 temp += "            </div>";
@@ -67,7 +68,7 @@ $( document ).ready(() => {
                 temp += "                    <i class=\"fa fa-star\" aria-hidden=\"true\"></i>";
                 temp += "               </div>";
                 temp += "                <div class=\"cart\">";
-                temp += `                    <a href=\"#\" onclick=addToCart("${item._id}") data-toggle=\"tooltip\" data-placement=\"left\" title=\"Add to Cart\"><img src=\"./assets/images/core-img/cart.png\" alt=\"\"></a>`;
+                temp += `                    <a href="#" onclick=addToCart("${item._id}") data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="./assets/images/core-img/cart.png" alt=""></a>`;
                 temp += "                </div>";
                 temp += "           </div>";
                 temp += "        </div>";

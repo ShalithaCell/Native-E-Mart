@@ -2,16 +2,17 @@ const Router = require('koa-router');
 const StatusCodes = require('http-status-codes');
 const { ItemType, Response } = require('../../types');
 const { ItemService } = require('../../services');
+const { koaJwt } = require('../../middlewares');
 
 // Prefix all routes with: /item
 const router = new Router({
-    prefix : '/item',
+    prefix : '/api/item',
 });
 
 // Routes will go here
 
 // item create method
-router.post('/create', async (ctx, next) =>
+router.post('/create', koaJwt, async (ctx, next) =>
 {
     const request = Object.setPrototypeOf(ctx.request.body, ItemType.prototype);
     // Check if any of the data field not empty
@@ -129,7 +130,7 @@ router.get('/getById/:_id', async (ctx, next) =>
     next().then();
 });
 
-router.delete('/deleteById/:_id', async (ctx, next) =>
+router.delete('/deleteById/:_id', koaJwt, async (ctx, next) =>
 
 {
     const { params } = ctx;
@@ -166,7 +167,7 @@ router.delete('/deleteById/:_id', async (ctx, next) =>
     next().then();
 });
 
-router.put('/update', async (ctx, next) =>
+router.put('/update', koaJwt, async (ctx, next) =>
 {
     const params = ctx.request.body;
 
